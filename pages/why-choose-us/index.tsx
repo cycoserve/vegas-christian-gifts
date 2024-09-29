@@ -28,20 +28,11 @@ function WhyChooseUs() {
       />
 
       <RootLayout>
-        <Hero
-          title="No Hassle Dev and Deployments"
-          description="Cut through the confussion with a dedicateds AI Engineer. Save time and money without sacrificing quality."
-          background=""
-          bptext="Download"
-          bpurl="https://github.com/cycoserve/CycoServe"
-          bstext="Guides"
-          bsurl="http://docs.cycoserve.com/"
-        />
+        <Hero/>
         <div className="flex flex-col justify-center items-center bg-gradient-to-b from-black to-zinc-950 pb-24 min-h-screen">
           <SectionWrap>
             <Spacer />
             <TitleSection
-              subtitle=""
               title="Dedicated to high quality and ease of use."
             />
             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-12">
@@ -90,7 +81,6 @@ function WhyChooseUs() {
         <Spacer />
         <SectionWrap>
           <TitleSection
-            subtitle=""
             title="Choose CycoServe: Where Professionalism Meets Generosity"
           />
           <TwoColSection

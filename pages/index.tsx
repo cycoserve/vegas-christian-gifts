@@ -1,16 +1,16 @@
 import { motion } from "framer-motion";
 import Hero from "@/components/Sections/Hero";
-import RootLayout from "@/components/Layouts/RootLayout";
-import TwoColSection from "@/components/Sections/TwoColSection";
+// import TwoColSection from "@/components/Sections/TwoColSection";
 import ThreeColSection from "@/components/Sections/ThreeColSection";
 import TitleSection from "@/components/Sections/TitleSection";
-import SwiperComponent from "@/components/Sections/SwiperComponent";
-import PageEndHero from "@/components/elements/PageEndHero";
+// import SwiperComponent from "@/components/Sections/SwiperComponent";
+// import PageEndHero from "@/components/elements/PageEndHero";
 import SectionWrap from "@/components/elements/SectionWrap";
-import TopBanner from "@/components/elements/TopBanner";
 import { NewsletterSignupComponent } from "@/components/newsletter-signup";
 import Spacer from "@/components/ui/Spacer";
 import MetaTags from "@/components/headers/MetaData";
+import BranchLayout from "@/components/Layouts/BranchLayout";
+import ProductCategoriesGrid from "@/components/Sections/ProductCategoryGrid";
 
 
 
@@ -30,24 +30,15 @@ export default function Home() {
   return (
     <>
       <MetaTags
-        title="CycoServe - AI/ML Powered Digital Marketing Agency"
+        title="Vegas Girl Tees - AI/ML Powered Digital Marketing Agency"
         description="CycoServe Labs is leading the way in open-source innovation, offering powerful tools for web development, AI, and data-driven technologies. Join us in making technology more accessible and open to innovators worldwide."
         url="https://cycoserve.com"
         imageUrl="https://cycoserve.com/assets/images/og-image.jpg"
       />
 
-      <RootLayout>
+      <BranchLayout>
         {/* Hero Section */}
-        <Hero
-          title="Your Portable Digital Marketing Agency"
-          description="A fully portable digital marketing agency, seamlessly integrating AI-driven strategies and on-the-go solutions."
-          background=""
-          bptext="Download"
-          bpurl="https://github.com/cycoserve/CycoServe"
-          bstext="Guides"
-          bsurl="http://docs.cycoserve.com/"
-        />
-
+        <Hero />
         {/* Top Banner */}
         <motion.div
           variants={fadeIn}
@@ -55,11 +46,11 @@ export default function Home() {
           whileInView="visible"
           viewport={{ once: true }}
         >
-          <TopBanner />
+          {/* <TopBanner /> */}
         </motion.div>
 
         {/* Features Section */}
-        <div className="features-bg wrap min-h-full py-12">
+        <div className=" wrap min-h-full py-12">
           <SectionWrap>
             <motion.div
               variants={zoomIn}
@@ -68,12 +59,7 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <div className="mx-auto md:px-0">
-                <div className="bg-gradient-to-br from-zinc-900 to-black p-4 border border-zinc-800 hover:border-orange-500 rounded-lg inset-full max-w-xl">
-                  <TitleSection
-                    subtitle=""
-                    title="Discover Our Suite of Cutting-Edge Solutions"
-                  />
-                </div>
+
               </div>
             </motion.div>
             <motion.div
@@ -82,13 +68,14 @@ export default function Home() {
               whileInView="visible"
               viewport={{ once: true }}
             >
-              <SwiperComponent />
+              <ProductCategoriesGrid />
+              {/* <SwiperComponent /> */}
             </motion.div>
           </SectionWrap>
         </div>
 
         {/* 2 Col Section */}
-        <div className="py-24 bg-black">
+        {/* <div className="py-24 bg-gray-100">
           <SectionWrap>
             <motion.div
               variants={fadeIn}
@@ -97,7 +84,6 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <TitleSection
-                subtitle=""
                 title="Where Professionalism Meets Generosity"
               />
             </motion.div>
@@ -117,10 +103,10 @@ export default function Home() {
               />
             </motion.div>
           </SectionWrap>
-        </div>
+        </div> */}
 
         {/* 3 Col Section */}
-        <div className="three bg-zinc-950 py-24">
+        <div className="three bg-slate-100 py-24">
           <SectionWrap>
             <motion.div
               variants={fadeIn}
@@ -129,8 +115,8 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <TitleSection
-                subtitle=""
-                title="Radio Management And Podcasting"
+
+                title="Custom Printing Services"
               />
             </motion.div>
             <motion.div
@@ -140,22 +126,22 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <ThreeColSection
-                title1="Unlimited Reach, Unlimited Audience"
-                description1="Expand your audience without limits with our radio stream hosting services. Enjoy unlimited listeners and bandwidth for seamless broadcasting."
-                image1="/images/dj-trump-1.webp"
-                title2="Effortlessly Managed Playback"
-                description2="Keep the music playing around the clock with our Auto DJ feature. Effortlessly manage your playlists and scheduling for uninterrupted entertainment."
-                image2="/images/trump-coder.webp"
-                title3="Podcast Hosting Made Easy"
-                description3="Dive into the world of podcasting with ease. Our hosting services extend to podcast hosting, empowering you to share your voice with the world."
-                image3="/assets/podcasting.jpg"
+                title1="Custom T-Shirt Printing"
+                description1="Bring your Vegas-inspired designs to life with our high-quality custom t-shirt printing. From glittering graphics to neon-bright colors, we make your ideas shine."
+                image1="/images/custom-tshirt-printing.jpg"
+                title2="Vegas-Themed Collections"
+                description2="Explore our ready-to-wear collections featuring iconic Las Vegas symbols. From casino chips to showgirl feathers, our designs capture the spirit of Sin City."
+                image2="/images/vegas-themed-collection.jpg"
+                title3="Personalized Vegas Souvenirs"
+                description3="Create unforgettable memories with our personalized Vegas souvenirs. Perfect for bachelorette parties, family reunions, or just celebrating the Vegas lifestyle."
+                image3="/images/personalized-vegas-souvenirs.jpg"
               />
             </motion.div>
           </SectionWrap>
         </div>
 
         {/* Page End Hero */}
-        <motion.div
+        {/* <motion.div
           variants={zoomIn}
           initial="hidden"
           whileInView="visible"
@@ -164,7 +150,7 @@ export default function Home() {
         >
           <SectionWrap>
             <PageEndHero
-              background="/images/dj-trump-1.webp"
+              background=""
               title="Transform Your Digital Presence"
               description="We offer cutting edge digital services that will enhance your company's online presence. "
               bptext="Download"
@@ -173,7 +159,7 @@ export default function Home() {
               bsurl="https://docs.cycoserve.com/"
             />
           </SectionWrap>
-        </motion.div>
+        </motion.div> */}
 
         {/* Newsletter Signup */}
         <SectionWrap>
@@ -182,14 +168,14 @@ export default function Home() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="max-w-7xl mx-auto"
+            className="max-w-7xl mx-auto pt-12"
           >
             <NewsletterSignupComponent />
           </motion.div>
         </SectionWrap>
 
         <Spacer />
-      </RootLayout>
+      </BranchLayout>
     </>
   );
 }

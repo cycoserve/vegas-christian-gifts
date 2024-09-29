@@ -25,7 +25,7 @@ const TwoColSection: React.FC<TwoColSectionProps> = ({
           <div className="mx-auto">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
               {/* Column 1 */}
-              <div className="bg-gradient-to-br from-zinc-900 to-black rounded-lg p-2 border border-zinc-800 hover:border-orange-500 hover:cursor-pointer">
+              <div className="bg-white rounded-lg p-2 border border-zinc-800 hover:border-orange-500 hover:cursor-pointer">
                 <Image
                   className="w-full rounded-lg mb-4"
                   src={image1}
@@ -39,7 +39,7 @@ const TwoColSection: React.FC<TwoColSectionProps> = ({
                 <p className="text-[0.8rem] text-white mb-4 px-2">{description1}</p>
               </div>
               {/* Column 2 */}
-              <div className="bg-gradient-to-br from-zinc-900 to-black rounded-lg p-2 border border-zinc-800 hover:border-orange-500 hover:cursor-pointer">
+              <div className="bg-white rounded-lg p-2 border border-zinc-800 hover:border-orange-500 hover:cursor-pointer">
                 <Image
                   className="w-full rounded-lg mb-4"
                   src={image2}

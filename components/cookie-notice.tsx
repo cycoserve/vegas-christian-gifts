@@ -27,7 +27,7 @@ export function CookieNotice() {
         transform: isVisible ? 'translateY(0)' : 'translateY(100%)',
       }}
     >
-      <div className="p-1 bg-gradient-to-r from-purple-500 to-orange-500 rounded-lg">
+      <div className="p-1 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg">
         <div className="bg-gradient-to-r from-black to-zinc-900 backdrop-filter backdrop-blur-lg bg-opacity-35 p-4 sm:p-6 rounded-lg">
           <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
             <div className="flex-1">

@@ -19,13 +19,13 @@ export function NewsletterSignupComponent() {
   }
 
   return (
-    <section className="bg-gradient-to-tr from-black to-zinc-900  border border-zinc-800 rounded-lg hover:border-orange-500 text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
+    <section className="bg-white  border shadow-md rounded-lg  text-zinc-100 py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
         <div className="text-center">
-          <h2 className="text-3xl text-white font-extrabold tracking-tight sm:text-4xl">
+          <h2 className="text-3xl text-pink-500 font-extrabold tracking-tight sm:text-4xl">
             Stay updated with our newsletter
           </h2>
-          <p className="mt-4 text-[0.8rem] text-zinc-300">
+          <p className="mt-4 text-[0.8rem] text-zinc-600">
             Get the latest news and updates delivered straight to your inbox.
           </p>
         </div>
@@ -42,7 +42,7 @@ export function NewsletterSignupComponent() {
               required
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="w-full rounded-full text-white bg-black border border-zinc-800 placeholder-zinc-200 focus:outline-none focus:border-orange-500"
+              className="w-full rounded-full text-white bg-white border border-zinc-800 placeholder-zinc-600 focus:outline-none focus:border-pink-500"
               placeholder="Enter your email"
             />
           </div>
@@ -50,7 +50,7 @@ export function NewsletterSignupComponent() {
             <Button
               type="submit"
               disabled={status === 'loading'}
-              className="w-full flex items-center justify-center px-5 py-4 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-orange-500 to-purple-600 hover:from-orange-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
+              className="w-full flex items-center justify-center px-5 py-4 border border-transparent text-base font-medium rounded-full text-white bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500"
             >
               {status === 'loading' ? 'Subscribing...' : 'Subscribe'}
             </Button>

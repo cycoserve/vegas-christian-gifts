@@ -20,7 +20,7 @@ const SearchComponent: React.FC = () => {
           value={searchTerm}
           onChange={handleInputChange}
           placeholder="Search..."
-          className="w-full py-2 pl-10 pr-4 text-gray-800 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-orange-500"
+          className="w-full py-2 pl-10 -mb-4 pr-4 text-gray-800 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
 function LogoDark() {
@@ -21,13 +21,17 @@ function LogoDark() {
   return (
     <div className="flex -mt-2 justify-center items-center bg-transparent">
       <Link href={"/"} >
-      <Image
+      {/* <Image
         src={scrolled ? "/logo-dark.svg" : "/logo-dark.svg"}
         alt="Logo"
         className=" h-8 object-cover"
         width={150}
         height={100}
-      />
+      /> */}
+      <div className="font-bold text-xl">
+           Vega$Girl
+      </div>
+   
       </Link>
 
     </div>

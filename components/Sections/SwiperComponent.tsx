@@ -69,7 +69,7 @@ const SwiperComponent = () => {
           >
             {slides.map((slide, index) => (
               <SwiperSlide key={index}>
-                <div className="flex flex-col items-start bg-gradient-to-br from-zinc-900 to-black p-2 rounded-lg border border-zinc-800 hover:border-orange-500">
+                <div className="flex flex-col items-start bg-white p-2 rounded-lg border border-zinc-800 hover:border-pink-500">
                   <Image
                     className="w-full aspect-square object-cover rounded-lg mb-4 shadow-lg shadow-blue-900/5 hover:shadow-blue-500/35"
                     src={slide.image}
@@ -77,10 +77,10 @@ const SwiperComponent = () => {
                     width={500}
                     height={500}
                   />
-                  <h2 className="text-lg text-start font-bold text-white mb-2 line-clamp-1">
+                  <h2 className="text-lg text-start font-bold text-zinc-600 mb-2 line-clamp-1">
                     {slide.title}
                   </h2>
-                  <p className="text-[0.8rem] text-white mb-4 line-clamp-2">
+                  <p className="text-[0.8rem] text-zinc-600 mb-4 line-clamp-2">
                     {slide.description}
                   </p>
                 </div>

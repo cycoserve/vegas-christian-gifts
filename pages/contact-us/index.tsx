@@ -1,8 +1,10 @@
-import { Inter } from "next/font/google";
 import ContactForm from "@/components/Sections/ContactForm";
 import SectionWrap from "@/components/elements/SectionWrap";
 import BranchLayout from "@/components/Layouts/BranchLayout";
 import MetaTags from "@/components/headers/MetaData";
+
+
+
 
 export default function Home() {
   return (
@@ -17,7 +19,7 @@ export default function Home() {
         <BranchLayout>
           <SectionWrap>
             <div className="flex flex-col lg:flex-row gap-8">
-              <div className="w-full">
+              <div className="w-full pt-12">
                 <ContactForm />
               </div>
             </div>

@@ -1,72 +1,56 @@
-import React from "react";
-import ButtonPrimary from "@/components/ui/ButtonPrimary";
-import ButtonSecondary from "@/components/ui/ButtonSecondary";
-import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button"
+import { ChevronRight } from "lucide-react"
+import Image from "next/image"
 
-interface HeroProps {
-  title: string;
-  description: string;
-  background: string;
-  bptext: string;
-  bpurl: string;
-  bstext: string;
-  bsurl: string;
-}
-
-const Hero: React.FC<HeroProps> = ({
-  title,
-  description,
-  background,
-  bptext,
-  bpurl,
-  bstext,
-  bsurl,
-}) => {
-  const fadeIn = {
-    hidden: { opacity: 0 },
-    visible: { opacity: 1, transition: { duration: 0.8 } },
-  };
-
-  const zoomIn = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: { scale: 1, opacity: 1, transition: { duration: 0.8 } },
-  };
-
+export default function AboutHero() {
   return (
-    <>
-      <section
-        className="hero-section min-h-screen  flex flex-col pt-36 pb-24 items-center justify-center relative text-white bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `linear-gradient(to bottom, black, green), url(${background})`,
-        }}
-      >
-        <div className="max-w-7xl mx-auto px-4 lg:px-4">
-          <motion.div
-            variants={zoomIn}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <div className=" text-start max-w-7xl">
-              <div className="">
-                <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold leading-tight md:leading-tight lg:leading-tight mb-6 bg-clip-text text-transparent bg-gradient-to-r from-orange-500 to-violet-500 min-h-full pb-4">
-                  {title}
-                </h1>
-              </div>
+    <div className="relative bg-white overflow-hidden">
+      {/* Vegas-inspired background pattern */}
+      <div className="absolute inset-0 z-0">
+        <div className="absolute inset-0 bg-pink-50 bg-opacity-30 backdrop-filter backdrop-blur-sm" />
+        <div className="absolute inset-0 bg-[url('/images/vegas-pattern.svg')] opacity-5" />
+      </div>
 
-              <p className="max-w-7xl mx-auto text-[0.8rem] mb-8 leading-relaxed md:leading-relaxed lg:leading-relaxed">
-                {description}
-              </p>
-              <div className="flex flex-row justify-start items-center gap-4">
-                <ButtonPrimary title={bptext} url={bpurl} />
-                <ButtonSecondary title={bstext} url={bsurl} />
-              </div>
+      <div className="relative z-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
+          <div className="mb-8 lg:mb-0">
+            <h1 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight mb-4">
+              Our <span className="text-pink-500">Vegas-Inspired</span> Story
+            </h1>
+            <p className="text-lg text-gray-600 mb-6">
+              From the dazzling lights of the Strip to the comfort of your wardrobe, Vegas Girl Tees brings the spirit of Las Vegas to life through our unique, high-quality designs.
+            </p>
+            <div className="flex space-x-4">
+              <Button className="bg-pink-500 hover:bg-pink-600 text-white">
+                Our Journey
+                <ChevronRight className="ml-2 h-4 w-4" />
+              </Button>
+              <Button variant="outline" className="border-pink-500 text-pink-500 hover:bg-pink-50">
+                Meet the Team
+              </Button>
             </div>
-          </motion.div>
+          </div>
+          <div className="relative">
+            <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden shadow-lg">
+              <Image
+                src="/placeholder.svg?height=600&width=800"
+                alt="Vegas Girl Tees Team"
+                width={800}
+                height={600}
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="absolute -bottom-4 -left-4 bg-white p-3 rounded-lg shadow-md">
+              <p className="text-xl font-bold text-pink-500">10+ Years</p>
+              <p className="text-xs text-gray-600">Bringing Vegas to Your Wardrobe</p>
+            </div>
+            <div className="absolute -top-4 -right-4 bg-black p-3 rounded-full shadow-md">
+              <p className="text-xl font-bold text-white">100%</p>
+              <p className="text-xs text-gray-300">Vegas Inspired</p>
+            </div>
+          </div>
         </div>
-      </section>
-    </>
-  );
-};
-
-export default Hero;
+      </div>
+    </div>
+  )
+}

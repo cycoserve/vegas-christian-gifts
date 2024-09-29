@@ -16,7 +16,7 @@ const BranchLayout: React.FC<BranchLayoutProps> = ({ children }) => {
 
   return (
     <div>
-      <header>{isHomePage ? <Header /> : <SecondHeader />}</header>
+      <header>{isHomePage ? <SecondHeader /> : <SecondHeader />}</header>
       <main className="pt-12 md:pt-24 bg-white">{children}</main>
       <footer>
         <Footer />

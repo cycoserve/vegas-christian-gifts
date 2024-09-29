@@ -6,7 +6,8 @@ import ButtonPrimary from "../ui/ButtonPrimary";
 import Image from "next/image";
 import ButtonExplore from "../ui/ButtonExplore";
 import SearchComponent from "../Sections/SearchComponent";
-import { menuItems } from './data/menuItems';
+import { mobileMenuItems } from './data/mobileMenuItems';
+import Logo from "./Logo";
 
 
 
@@ -62,34 +63,29 @@ const MobileMenu = () => {
           overlayColor="white"
           size={280}
         >
-          <div className="bg-orange-500 h-full w-full">
-            {/* Logo */}
-            <div className="bg-white px-2 pt-4 pb-2">
-              <Image src={"/logo-dark.svg"} alt={""} width={150} height={100} />
-            </div>
+          <div className="bg-pink-500 h-full w-full">
             {/* Action Buttons */}
-            <div className="pt-2 pb-4 bg-white px-2 flex flex-row gap-2 justify-between items-center">
-              <ButtonPrimary title={"Download"} url={"https://github.com/cycoserve"} />
-              <ButtonExplore title={"Guides"} url={"/documentation"} />
+            <div className="pt-12 pb-4 bg-white px-2 flex flex-row gap-2 justify-between items-center">
+              <ButtonPrimary title={"Wishlist"} url={"https://github.com/cycoserve"} />
+              <ButtonExplore title={"Cart"} url={"/documentation"} />
             </div>
             {/* Search */}
-            <div className="pt-2 pb-4 bg-white px-2 flex flex-row gap-2 justify-between items-center">
-              <SearchComponent />
+            <div className="pt-2 pb-2 bg-white px-2 flex flex-row gap-2 justify-between items-center">
             </div>
 
             <div className="list flex flex-col justify-stretch h-full items-start text-zinc-900 py-0 text-xl gap-0">
-              {menuItems.map((item) => (
+              {mobileMenuItems.map((item) => (
                 <React.Fragment key={item.id}>
                   <div className="w-full">
                     {/* Top Divider */}
-                    <div className="w-full h-[1px] bg-orange-300" />
+                    <div className="w-full h-[1px] bg-pink-300" />
                     <Link href={item.url}>
-                      <div className="p-4 text-white hover:bg-orange-600 hover:text-white transition duration-200">
+                      <div className="p-4 text-white hover:bg-pink-600 hover:text-white transition duration-200">
                         {item.title}
                       </div>
                     </Link>
                     {/* Bottom Divider */}
-                    <div className="w-full h-[1px] bg-orange-300" />
+                    <div className="w-full h-[1px] bg-pink-300" />
                   </div>
                 </React.Fragment>
               ))}
