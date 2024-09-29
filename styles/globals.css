@@ -1,0 +1,371 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background-color: #000000;
+}
+
+hr {
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* Typography styles */
+h1 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 1rem;
+  line-height: 54px;
+}
+
+h2 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 0.75rem;
+}
+
+h3 {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #d7d7d7;
+  margin-bottom: 0.5rem;
+}
+
+h4 {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #e5e5e5;
+  margin-bottom: 0.5rem;
+}
+
+/* List styles */
+ol, ul {
+  margin: 20px 0;
+  padding-left: 40px;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+ul {
+  list-style-type: disc;
+}
+
+ol li, ul li {
+  margin-bottom: 10px;
+}
+
+/* Nested lists */
+ol ol, ol ul, ul ol, ul ul {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+ol ol {
+  list-style-type: lower-alpha;
+}
+
+ul ul {
+  list-style-type: circle;
+}
+
+/* Custom list styles */
+.custom-list {
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.custom-list ol {
+  list-style-type: decimal;
+}
+
+.custom-list ul {
+  list-style-type: disc;
+}
+
+.custom-list li {
+  margin-bottom: 10px;
+  padding-left: 5px;
+}
+
+.custom-list li::marker {
+  color: #ff6347;
+}
+
+.custom-list a {
+  color: #1e90ff;
+  text-decoration: none;
+}
+
+.custom-list a:hover {
+  text-decoration: underline;
+}
+
+/* Tag cloud styles */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tag {
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  background-color: #f0f0f0;
+  color: #333;
+  transition: all 0.3s ease;
+}
+
+.tag:hover {
+  background-color: #e0e0e0;
+}
+
+/* Category list styles */
+.category-list {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1px;
+}
+
+.category-item {
+  background-color: #202020;
+  color: white;
+  padding: 8px 10px;
+  margin-bottom: 4px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.category-item:hover {
+  background-color: #f3a43c;
+}
+
+/* Article list widget styles */
+.article-list-widget {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.article-item {
+  display: flex;
+  gap: 10px;
+}
+
+.article-image {
+  flex: 0 0 auto;
+}
+
+.article-content {
+  flex: 1 1 auto;
+}
+
+.article-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  line-height: 20px;
+}
+
+.article-excerpt {
+  font-size: 12px;
+  color: #666;
+}
+
+/* Add spacing to the top and bottom of all images in posts */
+.post-content img {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+/* Style for blockquote elements */
+blockquote {
+  border-left: 4px solid #3b3b3b; /* Add a left border with a custom color */
+  padding: 1rem; /* Add padding around the text */
+  margin: 1.5rem 0; /* Add spacing above and below the blockquote */
+  background-color: #242424; /* Set background color */
+  color: #e5e7eb; /* Set text color */
+  font-style: italic; /* Make the text italic */
+  font-size: 1.1rem; /* Adjust font size */
+  border-radius: 5px; /* Add rounded corners */
+}
+
+/* global.css */
+
+/* Styling for code blocks */
+code, pre {
+  display: block;
+  background-color: #1e1e1e; /* Dark background for code */
+  color: #dcdcdc; /* Light text color */
+  padding: 1rem;
+  border-radius: 5px;
+  overflow-x: auto; /* Makes the code block scrollable */
+  white-space: pre-wrap; /* Prevents long lines from overflowing */
+  max-width: 100%; /* Limits the width of the code block */
+  font-family: 'Courier New', Courier, monospace; /* Monospaced font */
+  margin: 1rem 0; /* Adds space above and below the code block */
+}
+
+/* Optional: Hide scrollbar for a cleaner look */
+code::-webkit-scrollbar, pre::-webkit-scrollbar {
+  height: 8px;
+}
+
+code::-webkit-scrollbar-thumb, pre::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 10px;
+}
+
+code::-webkit-scrollbar-thumb:hover, pre::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+
+/* Features background */
+.features-bg {
+  background-color: #720e0e;
+  opacity: 100;
+  background-image: linear-gradient(#f46f00 1.0px, transparent 1.0px), linear-gradient(to right, #f46f00 1.5px, #000000 0px);
+  background-size: 7rem 7rem;
+  background-attachment: scroll;
+}
+
+/* Swiper styles */
+.swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.swiper-slide img {
+  border-radius: 10px;
+}
+
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #333;
+}
+
+.custom-swiper-button-prev:hover,
+.custom-swiper-button-next:hover {
+  background-color: #f0f0f0;
+}
+
+/* Footer background */
+.footer-bg .magicpattern { 
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: repeat;
+  /* background-image: url('/path/to/your/background-image.jpg'); */
+}
+
+/* Custom scrollbar styles */
+.sidebar-custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #4a4a4a #2e2e2e;
+}
+
+.sidebar-custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+
+.sidebar-custom-scrollbar::-webkit-scrollbar-track {
+  background: #2e2e2e;
+}
+
+.sidebar-custom-scrollbar::-webkit-scrollbar-thumb {
+  background-color: #4a4a4a;
+  border-radius: 10px;
+  border: 2px solid #2e2e2e;
+}
+
+.sidebar-custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background-color: #555;
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 240 10% 3.9%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 10% 3.9%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 10% 3.9%;
+    --primary: 240 5.9% 10%;
+    --primary-foreground: 0 0% 98%;
+    --secondary: 240 4.8% 95.9%;
+    --secondary-foreground: 240 5.9% 10%;
+    --muted: 240 4.8% 95.9%;
+    --muted-foreground: 240 3.8% 46.1%;
+    --accent: 240 4.8% 95.9%;
+    --accent-foreground: 240 5.9% 10%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 5.9% 90%;
+    --input: 240 5.9% 90%;
+    --ring: 240 10% 3.9%;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+    --radius: 0.5rem;
+  }
+  .dark {
+    --background: 240 10% 3.9%;
+    --foreground: 0 0% 98%;
+    --card: 240 10% 3.9%;
+    --card-foreground: 0 0% 98%;
+    --popover: 240 10% 3.9%;
+    --popover-foreground: 0 0% 98%;
+    --primary: 0 0% 98%;
+    --primary-foreground: 240 5.9% 10%;
+    --secondary: 240 3.7% 15.9%;
+    --secondary-foreground: 0 0% 98%;
+    --muted: 240 3.7% 15.9%;
+    --muted-foreground: 240 5% 64.9%;
+    --accent: 240 3.7% 15.9%;
+    --accent-foreground: 0 0% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 240 3.7% 15.9%;
+    --input: 240 3.7% 15.9%;
+    --ring: 240 4.9% 83.9%;
+    --chart-1: 220 70% 50%;
+    --chart-2: 160 60% 45%;
+    --chart-3: 30 80% 55%;
+    --chart-4: 280 65% 60%;
+    --chart-5: 340 75% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
