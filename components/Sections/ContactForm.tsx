@@ -12,6 +12,8 @@ const containerClasses = 'container mx-auto py-8';
 const cardClasses = 'bg-white shadow-md rounded-lg p-6 ring-2 ring-gray-100';
 const buttonClasses = 'bg-pink-500 text-white py-1 px-8 rounded-full hover:bg-pink-600 focus:outline-none focus:ring focus:ring-pink-300 focus:ring-opacity-50';
 
+
+
 const ContactForm = () => {
   return (
     <div className={containerClasses}>

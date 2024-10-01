@@ -41,7 +41,7 @@ export default function Hero() {
           <div className="relative mx-auto w-full max-w-lg lg:max-w-none">
             <div className="relative aspect-[4/3]">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/products/female-vest.png"
                 alt="Vegas Girl Tees Showcase"
                 width={800}
                 height={600}

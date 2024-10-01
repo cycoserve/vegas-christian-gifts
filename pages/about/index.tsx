@@ -3,7 +3,7 @@ import Head from "next/head";
 import SectionWrap from "@/components/elements/SectionWrap";
 import Spacer from "@/components/ui/Spacer";
 import MissionVision from "@/components/Sections/MissionVision";
-import { NewsletterSignupComponent } from "@/components/newsletter-signup";
+import { NewsletterSignupComponent } from "@/components/marketing/newsletter-signup";
 import AboutHero from "@/components/Sections/AboutHero";
 import MetaTags from "@/components/headers/MetaData";
 import BranchLayout from "@/components/Layouts/BranchLayout";

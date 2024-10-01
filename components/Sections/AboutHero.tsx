@@ -33,7 +33,7 @@ export default function AboutHero() {
           <div className="relative">
             <div className="aspect-w-4 aspect-h-3 rounded-lg overflow-hidden shadow-lg">
               <Image
-                src="/placeholder.svg?height=600&width=800"
+                src="/images/bitmap.png"
                 alt="Vegas Girl Tees Team"
                 width={800}
                 height={600}

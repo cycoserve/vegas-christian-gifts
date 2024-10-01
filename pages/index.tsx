@@ -6,7 +6,7 @@ import TitleSection from "@/components/Sections/TitleSection";
 // import SwiperComponent from "@/components/Sections/SwiperComponent";
 // import PageEndHero from "@/components/elements/PageEndHero";
 import SectionWrap from "@/components/elements/SectionWrap";
-import { NewsletterSignupComponent } from "@/components/newsletter-signup";
+import { NewsletterSignupComponent } from "@/components/marketing/newsletter-signup";
 import Spacer from "@/components/ui/Spacer";
 import MetaTags from "@/components/headers/MetaData";
 import BranchLayout from "@/components/Layouts/BranchLayout";
@@ -128,13 +128,13 @@ export default function Home() {
               <ThreeColSection
                 title1="Custom T-Shirt Printing"
                 description1="Bring your Vegas-inspired designs to life with our high-quality custom t-shirt printing. From glittering graphics to neon-bright colors, we make your ideas shine."
-                image1="/images/custom-tshirt-printing.jpg"
+                image1="/products/custom-tshirt.png"
                 title2="Vegas-Themed Collections"
                 description2="Explore our ready-to-wear collections featuring iconic Las Vegas symbols. From casino chips to showgirl feathers, our designs capture the spirit of Sin City."
-                image2="/images/vegas-themed-collection.jpg"
+                image2="/products/custom-tshirt.png"
                 title3="Personalized Vegas Souvenirs"
                 description3="Create unforgettable memories with our personalized Vegas souvenirs. Perfect for bachelorette parties, family reunions, or just celebrating the Vegas lifestyle."
-                image3="/images/personalized-vegas-souvenirs.jpg"
+                image3="/products/custom-tshirt.png"
               />
             </motion.div>
           </SectionWrap>
@@ -173,7 +173,6 @@ export default function Home() {
             <NewsletterSignupComponent />
           </motion.div>
         </SectionWrap>
-
         <Spacer />
       </BranchLayout>
     </>

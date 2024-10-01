@@ -3,7 +3,7 @@ import SecondNavigation from "./SecondNavigation";
 import ButtonPrimary from "../ui/ButtonPrimary";
 import LogoDark from "./LogoDark";
 import SecondMobileMenu from "./SecondMobileMenu";
-import SearchComponent from "../Sections/SearchComponent";
+
 
 function SecondHeader() {
   const [scrolled, setScrolled] = useState(false);
@@ -24,14 +24,13 @@ function SecondHeader() {
   return (
     <>
       <div
-        className={`${
-          scrolled ? "shadow-md" : "shadow-sm border-b"
-        } fixed top-0 left-0 w-full right-0 z-10 py-2 bg-white transition duration-600 ease-in-out`}
+        className={`${scrolled ? "shadow-md" : "shadow-sm border-b"
+          } fixed top-0 left-0 w-full right-0 z-10  bg-white transition duration-600 ease-in-out`}
       >
-        <div className="container pt-4 pb-2 px-4 md:px-2 mx-auto flex justify-between items-center">
+        <div className="container px-4 md:px-2 mx-auto flex justify-between items-center">
           <LogoDark />
-          <div className="hidden w-full px-4 lg:block">
-          <SearchComponent />
+          <div className="hidden px-4 lg:block">
+            <SecondNavigation />
           </div>
           <div className="inline-flex">
             <div className="mr-4 -mt-2 hidden md:inline-block">

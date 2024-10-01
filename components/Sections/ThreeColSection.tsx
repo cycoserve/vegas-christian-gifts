@@ -33,11 +33,11 @@ const ThreeColSection: React.FC<ThreeColSectionProps> = ({
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
               <Link href={'/'} className=" bg-white rounded-md shadow-md p-2">
                 <Image
-                  className="w-full rounded-lg mb-4 aspect-video"
+                  className="w-full rounded-lg mb-4 aspect-square"
                   src={image1}
                   alt=""
                   width={500}
-                  height={300}
+                  height={500}
                 />
                 <h2 className="text-lg font-bold text-zinc-600 mb-2">
                   {title1}
@@ -46,11 +46,11 @@ const ThreeColSection: React.FC<ThreeColSectionProps> = ({
               </Link>
               <Link href={'/'} className=" bg-white rounded-md shadow-md p-2">
                 <Image
-                  className="w-full rounded-lg mb-4 aspect-video"
+                  className="w-full rounded-lg mb-4 aspect-square"
                   src={image2}
                   alt=""
                   width={500}
-                  height={300}
+                  height={500}
                 />
                 <h2 className="text-lg font-bold text-zinc-600 mb-2">
                   {title2}
@@ -59,11 +59,11 @@ const ThreeColSection: React.FC<ThreeColSectionProps> = ({
               </Link>
               <Link href="/" className=" bg-white rounded-md shadow-md p-2">
                 <Image
-                  className="w-full rounded-lg mb-4 aspect-video"
+                  className="w-full rounded-lg mb-4 aspect-square"
                   src={image3}
                   alt=""
                   width={500}
-                  height={300}
+                  height={500}
                 />
                 <h2 className="text-lg font-bold text-zinc-600 mb-2">
                   {title3}

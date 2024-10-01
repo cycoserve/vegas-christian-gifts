@@ -5,23 +5,23 @@ import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/componen
 
 const categories = [
   {
-    title: "Phone Cases",
-    image: "/placeholder.svg?height=300&width=400",
-    link: "/categories/phone-cases",
+    title: "Sneakers",
+    image: "/products/sneaker.png",
+    link: "/categores/phone-cases",
   },
   {
     title: "T-shirts",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/products/hood-jacket-1.png",
     link: "/categories/t-shirts",
   },
   {
     title: "Hoodies",
-    image: "/placeholder.svg?height=300&width=400",
+    image: "/products/hood-jacket-2.png",
     link: "/categories/hoodies",
   },
   {
-    title: "Baseball Caps",
-    image: "/placeholder.svg?height=300&width=400",
+    title: "Beanies",
+    image: "/products/beanie.png",
     link: "/categories/baseball-caps",
   },
 ]
@@ -33,7 +33,7 @@ export default function ProductCategoriesGrid() {
         <h2 className="text-3xl font-extrabold text-black text-center mb-8">
           Explore Our <span className="text-pink-500">Vegas-Inspired</span> Products
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
           {categories.map((category) => (
             <Card key={category.title} className="overflow-hidden">
               <CardHeader className="p-0">
@@ -42,7 +42,7 @@ export default function ProductCategoriesGrid() {
                   alt={category.title}
                   width={400}
                   height={300}
-                  className="w-full h-48 object-cover"
+                  className="w-full object-cover aspect-square"
                 />
               </CardHeader>
               <CardContent className="p-4">

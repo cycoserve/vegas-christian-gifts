@@ -2,6 +2,7 @@ import ContactForm from "@/components/Sections/ContactForm";
 import SectionWrap from "@/components/elements/SectionWrap";
 import BranchLayout from "@/components/Layouts/BranchLayout";
 import MetaTags from "@/components/headers/MetaData";
+import Spacer from "@/components/ui/Spacer";
 
 
 
@@ -19,11 +20,12 @@ export default function Home() {
         <BranchLayout>
           <SectionWrap>
             <div className="flex flex-col lg:flex-row gap-8">
-              <div className="w-full pt-12">
+              <div className="w-full pt-4">
                 <ContactForm />
               </div>
             </div>
           </SectionWrap>
+          <Spacer />
         </BranchLayout>
       </div>
     </>

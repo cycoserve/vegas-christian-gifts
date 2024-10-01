@@ -17,21 +17,6 @@ export const mobileMenuItems = [
       url: "/products",
     },
     {
-      id: "4",
-      title: "Custom Printing",
-      url: "#",
-    },
-    {
-      id: "5",
-      title: "Custom Printing",
-      url: "#",
-    },
-    {
-      id: "6",
-      title: "Blog Articles",
-      url: "/blog",
-    },
-    {
       id: "7",
       title:"Contact Us",
       url: "/contact-us",
