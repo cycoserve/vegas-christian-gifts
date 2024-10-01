@@ -111,7 +111,7 @@ export default function ProductsPage() {
 
                             {/* Products grid */}
                             <div className="col-span-3">
-                                <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                                     {filteredProducts.map((product) => (
                                         <Card key={product.id} className="overflow-hidden">
                                             <CardHeader className="p-0">

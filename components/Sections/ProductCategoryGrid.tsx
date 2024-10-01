@@ -33,7 +33,7 @@ export default function ProductCategoriesGrid() {
         <h2 className="text-3xl font-extrabold text-black text-center mb-8">
           Explore Our <span className="text-pink-500">Vegas-Inspired</span> Products
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
           {categories.map((category) => (
             <Card key={category.title} className="overflow-hidden">
               <CardHeader className="p-0">
