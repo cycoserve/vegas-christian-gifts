@@ -66,8 +66,8 @@ const MobileMenu = () => {
           <div className="bg-pink-500 h-full w-full">
             {/* Action Buttons */}
             <div className="pt-12 pb-4 bg-white px-2 flex flex-row gap-2 justify-between items-center">
-              <ButtonPrimary title={"Wishlist"} url={"https://github.com/cycoserve"} />
-              <ButtonExplore title={"Cart"} url={"/documentation"} />
+              <ButtonPrimary title={"Wishlist"} url={"#"} />
+              <ButtonExplore title={"Cart"} url={"#"} />
             </div>
             {/* Search */}
             <div className="pt-2 pb-2 bg-white px-2 flex flex-row gap-2 justify-between items-center">
