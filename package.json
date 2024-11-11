@@ -33,6 +33,7 @@
     "@radix-ui/react-slider": "^1.2.0",
     "@radix-ui/react-slot": "^1.1.0",
     "@radix-ui/react-tabs": "^1.1.0",
+    "@react-spring/web": "^9.7.5",
     "@sendgrid/mail": "^8.1.3",
     "@tsparticles/react": "^3.0.0",
     "@tsparticles/slim": "^3.3.0",
@@ -51,6 +52,7 @@
     "google-auth-library": "^9.14.1",
     "googleapis": "^144.0.0",
     "heroicons": "^2.1.4",
+    "js-cookie": "^3.0.5",
     "lmnt-node": "^1.2.3",
     "lodash": "^4.17.21",
     "lucide-react": "^0.441.0",
@@ -66,6 +68,7 @@
     "react-firebase-hooks": "^5.1.1",
     "react-frame-component": "^5.2.7",
     "react-google-recaptcha": "^3.1.0",
+    "react-hot-toast": "^2.4.1",
     "react-icons": "^5.2.1",
     "react-modern-drawer": "^1.3.1",
     "react-toastify": "^10.0.5",
@@ -73,7 +76,9 @@
     "swiper": "^11.1.3",
     "tailwind-merge": "^2.5.2",
     "tailwindcss-animate": "^1.0.7",
-    "yup": "^1.4.0"
+    "uuid": "^11.0.2",
+    "yup": "^1.4.0",
+    "zustand": "^5.0.1"
   },
   "devDependencies": {
     "@types/editorjs__header": "^2.6.3",

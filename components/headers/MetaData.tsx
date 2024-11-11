@@ -1,39 +1,37 @@
-import React from 'react';
-import Head from 'next/head'; // Use this for Next.js. If using React, import from 'react-helmet' instead.
+import Head from 'next/head';
 
-// Define the prop types
-interface MetaTagsProps {
-  title?: string;
-  description?: string;
-  url?: string;
-  imageUrl?: string;
-  locale?: string;
-  siteName?: string;
-}
-
-const MetaTags: React.FC<MetaTagsProps> = ({
-  title = "CycoServe Labs",
-  description = "CycoServe Labs is at the forefront of open-source solutions, providing cutting-edge tools for web development, AI, and data-driven technologies. Join us as we make technology more accessible and open for innovators worldwide.",
-  url = "https://cycoserve.com",
-  imageUrl = "https://cycoserve.com/assets/images/labs-hero-image.jpg",
+const MetaData = ({ 
+  title = "Vegas Girl Tees - Unique and Custom T-Shirts", 
+  description = "Discover Vegas Girl Tees for custom, stylish Las Vegas-themed t-shirts, accessories, and more. Unique designs for any occasion, perfect for adding Vegas flair to your wardrobe!", 
+  keywords = "Vegas Girl Tees, Las Vegas T-Shirts, Custom T-Shirts, Handmade T-Shirts, Unique T-Shirts, Women's T-Shirts, Vegas Apparel", 
+  url = "https://www.vegasgirltees.com", 
+  imageUrl = "https://www.vegasgirltees.com/assets/og-image.jpg", 
+  siteName = "Vegas Girl Tees",
   locale = "en_US",
-  siteName = "CycoServe Labs",
+  themeColor = "#EC4899"  // Tailwind pink-500
 }) => {
   return (
     <Head>
-      {/* Basic Meta Tags */}
+      {/* Primary Meta Tags */}
+      <title>{title}</title>
+      <meta name="description" content={description} />
+      <meta name="keywords" content={keywords} />
+      <meta name="author" content="Vegas Girl Tees" />
+      <meta name="robots" content="index, follow" />
+      <meta name="googlebot" content="index, follow" />
+      <meta name="bingbot" content="index, follow" />
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+      {/* Open Graph Meta Tags */}
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
-      <meta property="og:type" content="website" />
-      <meta property="og:url" content={url} />
       <meta property="og:image" content={imageUrl} />
-      
-      {/* Optional Meta Tags */}
+      <meta property="og:url" content={url} />
+      <meta property="og:type" content="website" />
       <meta property="og:site_name" content={siteName} />
       <meta property="og:locale" content={locale} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content="A representation of CycoServe Labs' innovative technology solutions." />
 
       {/* Twitter Meta Tags */}
       <meta name="twitter:card" content="summary_large_image" />
@@ -42,12 +40,13 @@ const MetaTags: React.FC<MetaTagsProps> = ({
       <meta name="twitter:image" content={imageUrl} />
 
       {/* Mobile theme color */}
-      <meta name="theme-color" content="#123456" /> {/* Replace with CycoServe's actual brand color */}
+      <meta name="theme-color" content={themeColor} />
 
-      <title>{title}</title>
-      <meta name="description" content={description} />
+      {/* Canonical Link and Favicon */}
+      <link rel="canonical" href={url} />
+      <link rel="icon" href="/favicon.ico" />
     </Head>
   );
 };
 
-export default MetaTags;
+export default MetaData;
