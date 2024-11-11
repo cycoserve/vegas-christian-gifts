@@ -46,7 +46,7 @@ const Footer = () => {
       links: [
         { id: 10, title: "Twitter", url: "https://twitter.com" },
         // { id: 11, title: "LinkedIn", url: "https://linkedin.com" },
-        // { id: 12, title: "Instagram", url: "https://instagram.com" },
+        // { id: 12, title: "Instagram", url: "https://instagram.com },
       ],
     },
   ];
