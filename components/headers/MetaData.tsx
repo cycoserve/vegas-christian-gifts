@@ -1,14 +1,14 @@
 import Head from 'next/head';
 
 const MetaData = ({ 
-  title = "Vegas Girl Tees - Unique and Custom T-Shirts", 
-  description = "Discover Vegas Girl Tees for custom, stylish Las Vegas-themed t-shirts, accessories, and more. Unique designs for any occasion, perfect for adding Vegas flair to your wardrobe!", 
-  keywords = "Vegas Girl Tees, Las Vegas T-Shirts, Custom T-Shirts, Handmade T-Shirts, Unique T-Shirts, Women's T-Shirts, Vegas Apparel", 
-  url = "https://www.vegasgirltees.com", 
-  imageUrl = "https://www.vegasgirltees.com/assets/og-image.jpg", 
-  siteName = "Vegas Girl Tees",
+  title = "Vegas Christian Gifts - Handcrafted and Personalized Faith-Based Gifts",
+  description = "Explore Vegas Christian Gifts for unique, handcrafted Las Vegas-themed gifts and keepsakes inspired by Christian values. Personalize gifts with your own message, perfect for any occasion, and crafted to last for generations.",
+  keywords = "Vegas Christian Gifts, Las Vegas Gifts, Handcrafted Gifts, Faith-Based Gifts, Christian Gifts, Personalized Gifts, Wholesale Gifts, Keepsakes",
+  url = "https://www.vegaschristiangifts.com",
+  imageUrl = "https://www.vegaschristiangifts.com/assets/og-image.jpg",
+  siteName = "Vegas Christian Gifts",
   locale = "en_US",
-  themeColor = "#EC4899"  // Tailwind pink-500
+  themeColor = "#4CAF50"
 }) => {
   return (
     <Head>
@@ -16,7 +16,7 @@ const MetaData = ({
       <title>{title}</title>
       <meta name="description" content={description} />
       <meta name="keywords" content={keywords} />
-      <meta name="author" content="Vegas Girl Tees" />
+      <meta name="author" content="Vegas Christian Gifts" />
       <meta name="robots" content="index, follow" />
       <meta name="googlebot" content="index, follow" />
       <meta name="bingbot" content="index, follow" />

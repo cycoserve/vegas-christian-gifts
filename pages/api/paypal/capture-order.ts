@@ -1,65 +1,36 @@
 import type { NextApiRequest, NextApiResponse } from 'next';
+import { PayPalClient, Environment, OrdersCaptureRequest } from '@paypal/checkout-server-sdk';
 
-const generateAccessToken = async () => {
-  try {
-    const auth = Buffer.from(
-      `${process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.PAYPAL_SECRET_KEY}`
-    ).toString('base64');
+const clientId = process.env.PAYPAL_CLIENT_ID;
+const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
-    const response = await fetch(`${process.env.PAYPAL_API_URL}/v1/oauth2/token`, {
-      method: 'POST',
-      body: 'grant_type=client_credentials',
-      headers: {
-        Authorization: `Basic ${auth}`,
-      },
-    });
+// Create PayPal client
+const environment = new Environment(clientId, clientSecret);
+const client = new PayPalClient(environment);
 
-    const data = await response.json();
-    return data.access_token;
-  } catch (error) {
-    console.error('Failed to generate Access Token:', error);
-    throw error;
-  }
-};
-
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse
-) {
+export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ message: 'Method not allowed' });
+    res.setHeader('Allow', ['POST']);
+    return res.status(405).end(`Method ${req.method} Not Allowed`);
+  }
+
+  const { orderID } = req.body;
+
+  if (!orderID) {
+    return res.status(400).json({ error: 'Order ID is required' });
   }
 
   try {
-    const { orderId } = req.body;
-    const accessToken = await generateAccessToken();
+    const request = new OrdersCaptureRequest(orderID);
+    const response = await client.execute(request);
 
-    const response = await fetch(
-      `${process.env.PAYPAL_API_URL}/v2/checkout/orders/${orderId}/capture`,
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          Authorization: `Bearer ${accessToken}`,
-        },
-      }
-    );
-
-    const data = await response.json();
-
-    if (data.error) {
-      throw new Error(data.error.message);
+    if (response.statusCode === 200 || response.statusCode === 201) {
+      return res.status(200).json({ status: 'success', data: response.result });
+    } else {
+      return res.status(response.statusCode).json({ error: 'Failed to capture payment', details: response.result });
     }
-
-    // Here you would typically:
-    // 1. Update order status in your database
-    // 2. Send confirmation email
-    // 3. Clear cart
-    // 4. Update inventory
-
-    res.status(200).json(data);
   } catch (error) {
-    console.error('Error capturing PayPal order:', error);
-    res.status(500).json({ error: 'Error capturing PayPal order' });
+    console.error('Error capturing payment:', error);
+    return res.status(500).json({ error: 'An error occurred while processing the payment' });
   }
 }

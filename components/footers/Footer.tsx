@@ -56,7 +56,7 @@ const Footer = () => {
       <footer className="bg-pink-400 relative bg-[url('')]  bg-cover bg-bottom pt-12">
         <div className="lower bg-pink-500 py-4 border-t border-t-gray-700">
           <div className="container bg-pink-500 px-4 mx-auto text-white text-sm">
-            <p> &copy; {currentYear} Vegas Girl Tees, LLC</p>
+            <p> &copy; {currentYear} Vegas Christian Gifts</p>
           </div>
         </div>
       </footer>

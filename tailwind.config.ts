@@ -43,11 +43,11 @@ const config: Config = {
   				foreground: 'hsl(var(--popover-foreground))'
   			},
   			primary: {
-  				DEFAULT: 'hsl(var(--primary))',
+  				DEFAULT: 'hsl(220, 90%, 56%)', // Changed to a blue color
   				foreground: 'hsl(var(--primary-foreground))'
   			},
   			secondary: {
-  				DEFAULT: 'hsl(var(--secondary))',
+  				DEFAULT: 'hsl(30, 90%, 56%)', // Changed to an orange color
   				foreground: 'hsl(var(--secondary-foreground))'
   			},
   			muted: {
@@ -59,7 +59,7 @@ const config: Config = {
   				foreground: 'hsl(var(--accent-foreground))'
   			},
   			destructive: {
-  				DEFAULT: 'hsl(var(--destructive))',
+  				DEFAULT: 'hsl(0, 90%, 56%)', // Changed to a red color
   				foreground: 'hsl(var(--destructive-foreground))'
   			},
   			border: 'hsl(var(--border))',
@@ -79,4 +79,3 @@ const config: Config = {
 };
 
 export default config;
-

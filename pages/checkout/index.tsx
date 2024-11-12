@@ -1,7 +1,7 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
-import BranchLayout from '@/components/Layouts/BranchLayout';
-import { Button } from '@/components/ui/button';
+import BranchLayout from '../../components/Layouts/BranchLayout';
+import { Button } from '../../components/ui/button';
 
 // Types for our checkout process
 interface ShippingDetails {
@@ -22,18 +22,15 @@ interface PaymentDetails {
   nameOnCard: string;
 }
 
-// Mock order summary data (will be replaced with actual cart data later)
-const mockOrderSummary = {
-  subtotal: 199.97,
-  shipping: 9.99,
-  tax: 20.00,
-  total: 229.96,
-  items: [
-    { id: 1, name: "Vegas Nights Sneakers", price: 89.99, quantity: 1 },
-    { id: 2, name: "Neon Lights T-Shirt", price: 29.99, quantity: 2 },
-    { id: 3, name: "Casino Royale Hoodie", price: 49.99, quantity: 1 }
-  ]
-};
+interface CartItem {
+  product: {
+    id: number;
+    name: string;
+    price: number;
+    image: string;
+  };
+  quantity: number;
+}
 
 export default function CheckoutPage() {
   const router = useRouter();
@@ -54,6 +51,14 @@ export default function CheckoutPage() {
     cvv: '',
     nameOnCard: ''
   });
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+
+  useEffect(() => {
+    if (router.query.cart) {
+      const cartData = JSON.parse(router.query.cart as string);
+      setCartItems(cartData);
+    }
+  }, [router.query.cart]);
 
   const handleShippingSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -69,6 +74,10 @@ export default function CheckoutPage() {
     // Here we would typically process the payment and create the order
     alert('Order placed successfully!');
     router.push('/');
+  };
+
+  const getCartTotal = () => {
+    return cartItems.reduce((total, item) => total + item.product.price * item.quantity, 0);
   };
 
   return (
@@ -312,31 +321,31 @@ export default function CheckoutPage() {
               <div className="bg-white p-6 rounded-lg shadow-md">
                 <h2 className="text-xl font-bold mb-4">Order Summary</h2>
                 <div className="space-y-4">
-                  {mockOrderSummary.items.map((item) => (
-                    <div key={item.id} className="flex justify-between">
+                  {cartItems.map((item) => (
+                    <div key={item.product.id} className="flex justify-between">
                       <div>
-                        <p className="font-medium">{item.name}</p>
+                        <p className="font-medium">{item.product.name}</p>
                         <p className="text-sm text-gray-500">Qty: {item.quantity}</p>
                       </div>
-                      <p>${(item.price * item.quantity).toFixed(2)}</p>
+                      <p>${(item.product.price * item.quantity).toFixed(2)}</p>
                     </div>
                   ))}
                   <div className="border-t pt-4">
                     <div className="flex justify-between">
                       <p>Subtotal</p>
-                      <p>${mockOrderSummary.subtotal.toFixed(2)}</p>
+                      <p>${getCartTotal().toFixed(2)}</p>
                     </div>
                     <div className="flex justify-between">
                       <p>Shipping</p>
-                      <p>${mockOrderSummary.shipping.toFixed(2)}</p>
+                      <p>$9.99</p>
                     </div>
                     <div className="flex justify-between">
                       <p>Tax</p>
-                      <p>${mockOrderSummary.tax.toFixed(2)}</p>
+                      <p>$20.00</p>
                     </div>
                     <div className="flex justify-between font-bold mt-2 pt-2 border-t">
                       <p>Total</p>
-                      <p>${mockOrderSummary.total.toFixed(2)}</p>
+                      <p>${(getCartTotal() + 9.99 + 20.00).toFixed(2)}</p>
                     </div>
                   </div>
                 </div>

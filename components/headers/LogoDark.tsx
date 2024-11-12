@@ -29,7 +29,7 @@ function LogoDark() {
         height={100}
       /> */}
       <div className="font-bold text-xl">
-           Vega$Girl
+          Vegas Christian Gifts
       </div>
    
       </Link>

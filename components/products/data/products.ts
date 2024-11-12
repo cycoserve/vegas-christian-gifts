@@ -1,166 +1,36 @@
-const products = [
+export interface Product {
+    id: number;
+    name: string;
+    title: string;
+    image: string;
+    price: number;
+    category: string;
+    for: string;
+    description: string;
+    materials: string[];
+    customization: string[];
+    paypalProductId: string;
+    paypalPrice: number;
+    quantity: number;
+    inCart: boolean;
+}
+
+export const products: Product[] = [
     {
         id: 1,
-        title: "Vegas Nights Sneakers",
-        image: "/products/sneaker.png",
-        price: 89.99,
-        category: "Sneakers",
-        for: "Men",
-    },
-    {
-        id: 2,
-        title: "Neon Lights T-Shirt",
-        image: "/products/hood-jacket-1.png",
+        name: "Cross Necklace",
+        title: "Cross Necklace",
+        image: "/products/cross-necklace.jpg",
         price: 29.99,
-        category: "T-shirts",
+        category: "Jewelry",
         for: "Women",
+        description: "A beautiful cross necklace made from sterling silver.",
+        materials: ["Sterling Silver"],
+        customization: ["Engraving"],
+        paypalProductId: "PROD-1",
+        paypalPrice: 29.99,
+        quantity: 0,
+        inCart: false
     },
-    {
-        id: 3,
-        title: "Casino Royale Hoodie",
-        image: "/products/hood-jacket-2.png",
-        price: 59.99,
-        category: "Hoodies",
-        for: "Men",
-    },
-    {
-        id: 4,
-        title: "Lucky Charm Beanie",
-        image: "/products/beanie.png",
-        price: 24.99,
-        category: "Beanies",
-        for: "Kids",
-    },
-    // New products
-    {
-        id: 5,
-        title: "Jackpot High Tops",
-        image: "/products/sneaker.png",
-        price: 99.99,
-        category: "Sneakers",
-        for: "Women",
-    },
-    {
-        id: 6,
-        title: "Strip Side Joggers",
-        image: "/products/hood-jacket-1.png",
-        price: 49.99,
-        category: "Pants",
-        for: "Men",
-    },
-    {
-        id: 7,
-        title: "Starlight Hoodie",
-        image: "/products/hood-jacket-2.png",
-        price: 64.99,
-        category: "Hoodies",
-        for: "Women",
-    },
-    {
-        id: 8,
-        title: "Lucky Ace Cap",
-        image: "/products/beanie.png",
-        price: 19.99,
-        category: "Caps",
-        for: "Men",
-    },
-    {
-        id: 9,
-        title: "Vegas Lights Sneakers",
-        image: "/products/sneaker.png",
-        price: 79.99,
-        category: "Sneakers",
-        for: "Kids",
-    },
-    {
-        id: 10,
-        title: "Downtown Vibes T-Shirt",
-        image: "/products/hood-jacket-1.png",
-        price: 34.99,
-        category: "T-shirts",
-        for: "Men",
-    },
-    {
-        id: 11,
-        title: "Desert Breeze Hoodie",
-        image: "/products/hood-jacket-2.png",
-        price: 69.99,
-        category: "Hoodies",
-        for: "Kids",
-    },
-    {
-        id: 12,
-        title: "Neon Glow Beanie",
-        image: "/products/beanie.png",
-        price: 29.99,
-        category: "Beanies",
-        for: "Women",
-    },
-    {
-        id: 13,
-        title: "Strip Stroll Sneakers",
-        image: "/products/sneaker.png",
-        price: 89.99,
-        category: "Sneakers",
-        for: "Men",
-    },
-    {
-        id: 14,
-        title: "High Roller Jacket",
-        image: "/products/hood-jacket-1.png",
-        price: 79.99,
-        category: "Jackets",
-        for: "Women",
-    },
-    {
-        id: 15,
-        title: "Vegas Glow Hoodie",
-        image: "/products/hood-jacket-2.png",
-        price: 54.99,
-        category: "Hoodies",
-        for: "Men",
-    },
-    {
-        id: 16,
-        title: "Casino Breeze Beanie",
-        image: "/products/beanie.png",
-        price: 22.99,
-        category: "Beanies",
-        for: "Kids",
-    },
-    {
-        id: 17,
-        title: "Sunset Streak Sneakers",
-        image: "/products/sneaker.png",
-        price: 95.99,
-        category: "Sneakers",
-        for: "Women",
-    },
-    {
-        id: 18,
-        title: "Neon Dreams T-Shirt",
-        image: "/products/hood-jacket-1.png",
-        price: 39.99,
-        category: "T-shirts",
-        for: "Kids",
-    },
-    {
-        id: 19,
-        title: "Jackpot Royale Hoodie",
-        image: "/products/hood-jacket-2.png",
-        price: 72.99,
-        category: "Hoodies",
-        for: "Women",
-    },
-    {
-        id: 20,
-        title: "Strip King Cap",
-        image: "/products/beanie.png",
-        price: 24.99,
-        category: "Caps",
-        for: "Kids",
-    }
+    // ... other products ...
 ];
-
-
-export default products;
