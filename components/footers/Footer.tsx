@@ -1,166 +1,183 @@
-"use client";
-import React from "react";
+import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock } from 'lucide-react'
+import Link from 'next/link'
 
-
-
-
-const Footer = () => {
-  const currentYear = new Date().getFullYear();
-  const footerColumns = [
-    {
-      id: 1,
-      header: "Company",
-      links: [
-        { id: 1, title: "Home", url: "/" },
-        { id: 2, title: "About", url: "/about" },
-        // { id: 3, title: "Features", url: "/features" },
-        // { id: 4, title: "Experts", url: "/experts" },
-        { id: 5, title: "Contact", url: "/contact-us" },
-      ],
-    },
-    {
-      id: 2,
-      header: "Services",
-      links: [
-        // { id: 4, title: "Web Development", url: "/web-development" },
-        // {
-        //   id: 5,
-        //   title: "Mobile App Development",
-        //   url: "/mobile-app-development",
-        // },
-        { id: 6, title: "All Services", url: "/services" },
-      ],
-    },
-    {
-      id: 3,
-      header: "Resources",
-      links: [
-        { id: 7, title: "Blog", url: "/blog" },
-        // { id: 8, title: "Documentation", url: "/docs" },
-        // { id: 9, title: "FAQs", url: "/faqs" },
-      ],
-    },
-    {
-      id: 4,
-      header: "Follow Us",
-      links: [
-        { id: 10, title: "Twitter", url: "https://twitter.com" },
-        // { id: 11, title: "LinkedIn", url: "https://linkedin.com" },
-        // { id: 12, title: "Instagram", url: "https://instagram.com },
-      ],
-    },
-  ];
-
+export default function Footer() {
   return (
-    <>
-      <footer className="bg-white relative bg-[url('')]  bg-cover bg-bottom pt-12">
-        <div className="lower bg-blue-700 py-4 border-t border-t-gray-700">
-          <div className="container bg-blue-700 px-4 mx-auto text-white text-sm">
-            <p> &copy; {currentYear} Vegas Christian Gifts</p>
+    <footer className="bg-white border-t border-gray-200">
+      <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
+        <div className="xl:grid xl:grid-cols-3 xl:gap-8">
+          <div className="space-y-8 xl:col-span-1">
+            <img
+              className="h-10"
+              src="/placeholder.svg?height=40&width=160"
+              alt="Vegas Christian Gifts Logo"
+            />
+            <p className="text-gray-500 text-base">
+              Spreading faith through nature's beauty. Our mini flower pots and custom engraved plates are perfect for sharing God's love.
+            </p>
+            <div className="flex space-x-6">
+              <a href="#" className="text-gray-400 hover:text-blue-500">
+                <span className="sr-only">Facebook</span>
+                <Facebook className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-blue-500">
+                <span className="sr-only">Instagram</span>
+                <Instagram className="h-6 w-6" />
+              </a>
+              <a href="#" className="text-gray-400 hover:text-blue-500">
+                <span className="sr-only">Twitter</span>
+                <Twitter className="h-6 w-6" />
+              </a>
+            </div>
+          </div>
+          <div className="mt-12 grid grid-cols-2 gap-8 xl:mt-0 xl:col-span-2">
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">About Us</h3>
+                <div role="list" className="mt-4 space-y-4">
+                  <div>
+                    <Link href="/our-story" className="text-base text-gray-500 hover:text-blue-600">
+                      Our Story
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/mission" className="text-base text-gray-500 hover:text-blue-600">
+                      Our Mission
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/team" className="text-base text-gray-500 hover:text-blue-600">
+                      Our Team
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/careers" className="text-base text-gray-500 hover:text-blue-600">
+                      Careers
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Products</h3>
+                <div role="list" className="mt-4 space-y-4">
+                  <div>
+                    <Link href="/mini-pots" className="text-base text-gray-500 hover:text-blue-600">
+                      Mini Flower Pots
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/wooden-plates" className="text-base text-gray-500 hover:text-blue-600">
+                      Engraved Wooden Plates
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/gift-sets" className="text-base text-gray-500 hover:text-blue-600">
+                      Gift Sets
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/accessories" className="text-base text-gray-500 hover:text-blue-600">
+                      Accessories
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="md:grid md:grid-cols-2 md:gap-8">
+              <div>
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Support</h3>
+                <div role="list" className="mt-4 space-y-4">
+                  <div>
+                    <Link href="/faq" className="text-base text-gray-500 hover:text-blue-600">
+                      FAQ
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/shipping" className="text-base text-gray-500 hover:text-blue-600">
+                      Shipping
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/returns" className="text-base text-gray-500 hover:text-blue-600">
+                      Returns
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/contact" className="text-base text-gray-500 hover:text-blue-600">
+                      Contact Us
+                    </Link>
+                  </div>
+                </div>
+              </div>
+              <div className="mt-12 md:mt-0">
+                <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase">Legal</h3>
+                <div role="list" className="mt-4 space-y-4">
+                  <div>
+                    <Link href="/privacy" className="text-base text-gray-500 hover:text-blue-600">
+                      Privacy Policy
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/terms" className="text-base text-gray-500 hover:text-blue-600">
+                      Terms of Service
+                    </Link>
+                  </div>
+                  <div>
+                    <Link href="/accessibility" className="text-base text-gray-500 hover:text-blue-600">
+                      Accessibility
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      </footer>
-    </>
-
-  );
-};
-
-export default Footer;
-
-
-
-
-// "use client";
-// import React from "react";
-// import { motion } from "framer-motion";
-// import Image from "next/image";
-// import Link from "next/link";
-
-
-// const Footer = () => {
-//   const currentYear = new Date().getFullYear();
-//   const footerColumns = [
-//     {
-//       id: 1,
-//       header: "Company",
-//       links: [
-//         { id: 1, title: "Home", url: "/" },
-//         { id: 2, title: "About", url: "/about" },
-//         // { id: 3, title: "Features", url: "/features" },
-//         // { id: 4, title: "Experts", url: "/experts" },
-//         { id: 5, title: "Contact", url: "/contact-us" },
-//       ],
-//     },
-//     {
-//       id: 2,
-//       header: "Services",
-//       links: [
-//         // { id: 4, title: "Web Development", url: "/web-development" },
-//         // {
-//         //   id: 5,
-//         //   title: "Mobile App Development",
-//         //   url: "/mobile-app-development",
-//         // },
-//         { id: 6, title: "All Services", url: "/services" },
-//       ],
-//     },
-//     {
-//       id: 3,
-//       header: "Resources",
-//       links: [
-//         { id: 7, title: "Blog", url: "/blog" },
-//         // { id: 8, title: "Documentation", url: "/docs" },
-//         // { id: 9, title: "FAQs", url: "/faqs" },
-//       ],
-//     },
-//     {
-//       id: 4,
-//       header: "Follow Us",
-//       links: [
-//         { id: 10, title: "Twitter", url: "https://twitter.com" },
-//         // { id: 11, title: "LinkedIn", url: "https://linkedin.com" },
-//         // { id: 12, title: "Instagram", url: "https://instagram.com" },
-//       ],
-//     },
-//   ];
-
-//   return (
-//     <>
-//       <footer className="bg-black bg-[url('')]  bg-cover bg-bottom pt-12">
-//         <div className="container mx-auto px-4 lg:px-0 py-16">
-//           <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-8 bg-black p-4 rounded-lg border-2 border-opacity-15 border-zinc-300 bg-opacity-60 ">
-//             {/* Map over footer columns to generate columns */}
-//             {footerColumns.map((column) => (
-//               <div key={column.id}>
-//                 <h3 className="text-white text-lg font-semibold mb-4">
-//                   {column.header}
-//                 </h3>
-//                 <ul>
-//                   {/* Map over footer links within each column */}
-//                   {column.links.map((link) => (
-//                     <motion.li key={link.id} whileHover={{ scale: 1.01 }}>
-//                       <Link
-//                         href={link.url}
-//                         className="text-white hover:text-gray-400"
-//                       >
-//                         {link.title}
-//                       </Link>
-//                     </motion.li>
-//                   ))}
-//                 </ul>
-//               </div>
-//             ))}
-//           </div>
-//         </div>
-//         <div className="lower bg-black py-4 border-t border-t-gray-700">
-//           <div className="container px-4 mx-auto text-white text-sm">
-//             <p> &copy; {currentYear} CycoServe,LLC. All rights reserved. </p>
-//           </div>
-//         </div>
-//       </footer>
-//     </>
-
-//   );
-// };
-
-// export default Footer;
+        <div className="mt-12 border-t border-gray-200 pt-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="space-y-8">
+              <div className="flex items-center">
+                <Mail className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                <span className="ml-3 text-base text-gray-500">info@vegaschristiangifts.com</span>
+              </div>
+              <div className="flex items-center">
+                <Phone className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                <span className="ml-3 text-base text-gray-500">+1 (555) 123-4567</span>
+              </div>
+              <div className="flex items-center">
+                <MapPin className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                <span className="ml-3 text-base text-gray-500">123 Faith Street, Las Vegas, NV 89101</span>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-sm font-semibold text-gray-400 tracking-wider uppercase mb-4">Business Hours</h3>
+              <div className="space-y-3">
+                <div className="flex items-center">
+                  <Clock className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                  <span className="ml-3 text-base text-gray-500">Mon - Fri: 9:00 AM - 6:00 PM</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                  <span className="ml-3 text-base text-gray-500">Sat: 10:00 AM - 4:00 PM</span>
+                </div>
+                <div className="flex items-center">
+                  <Clock className="flex-shrink-0 h-6 w-6 text-blue-600" />
+                  <span className="ml-3 text-base text-gray-500">Sun: Closed</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="mt-8 border-t border-gray-200 pt-8 md:flex md:items-center md:justify-between">
+          <div className="flex space-x-6 md:order-2">
+            <Link href="/sitemap" className="text-base text-gray-500 hover:text-blue-600">
+              Sitemap
+            </Link>
+          </div>
+          <p className="mt-8 text-base text-gray-400 md:mt-0 md:order-1">
+            &copy; 2023 Vegas Christian Gifts. All rights reserved.
+          </p>
+        </div>
+      </div>
+    </footer>
+  )
+}

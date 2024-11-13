@@ -15,7 +15,7 @@ export default function AboutHero() {
         <div className="lg:grid lg:grid-cols-2 lg:gap-8 items-center">
           <div className="mb-8 lg:mb-0">
             <h1 className="text-3xl md:text-4xl font-extrabold text-black tracking-tight mb-4">
-              Our <span className="text-pink-500">Vegas-Inspired</span> Story
+              Our <span className="text-pink-500">Vegas Christian Gifts</span> Story
             </h1>
             <p className="text-lg text-gray-600 mb-6">
               From the dazzling lights of the Strip to the comfort of your wardrobe, Vegas Girl Tees brings the spirit of Las Vegas to life through our unique, high-quality designs.

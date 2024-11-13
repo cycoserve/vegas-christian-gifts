@@ -1,48 +1,21 @@
-// components/SecondNavigation.tsx
-
+// components/Navigation.tsx
 "use client";
 import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
 import { menuItems } from './data/menuItems';
 
-const SecondNavigation: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
-  if (error) {
-    return <div>{error}</div>;
-  }
+const Navigation: React.FC = () => {
 
   return (
     <>
-      <div className="menu">
-        <ul className="flex justify-between items-center gap-8 list-none">
+      <div className="">
+        <ul className="flex justify-between space-x-12 items-center list-none">
           {menuItems.map((item) => (
-            <motion.li 
-              key={item.id}
-              whileHover={{ scale: 1.09 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Link href={item.url}>
-                <p className={`${scrolled ? "text-zinc-800 font-semibold hover:bg-pink-500 hover:text-white px-4 py-1" : "text-zinc-800 font-semibold hover:text-white px-4 py-1 rounded-full "}`}>
+              <Link href={item.url} key={item.id}>
+                <p className="text-white text-xl hover:text-slate-200 font-bold hover:text-white px-4 rounded-full ">
                   {item.title}
                 </p>
               </Link>
-            </motion.li>
           ))}
         </ul>
       </div>
@@ -50,4 +23,4 @@ const SecondNavigation: React.FC = () => {
   );
 };
 
-export default SecondNavigation;
+export default Navigation;

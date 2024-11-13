@@ -2,14 +2,14 @@ import React from 'react';
 import MetaData from '@/components/headers/MetaData';
 import ContactForm from '@/components/Sections/ContactForm';
 import SectionWrap from '@/components/elements/SectionWrap';
-import Layout from '@/components/Layouts/Layout';
+import Layout from '@/components/Layouts/RootLayout';
 import Spacer from '@/components/ui/Spacer';
 
 export default function ContactPage() {
   return (
     <>
       <MetaData
-        title="Vegas Christian Gifts"
+        title="Contact Us - Vegas Christian Gifts"
         description=""
         keywords=""
         url="https://www.vegaschristiangifts.com/about"

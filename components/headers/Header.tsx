@@ -1,42 +1,26 @@
-import React, { useState, useEffect } from "react";
-import SecondNavigation from "./Navigation";
-import SecondMobileMenu from "./MobileMenu";
 import Logo from "./Logo";
+import Navigation from "./Navigation";
+import MobileMenu from "./MobileMenu";
+import CartDrawer from "./CartDrawer";
 
 
-function SecondHeader() {
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const isScrolled = window.scrollY > 0;
-      setScrolled(isScrolled);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
-
+function Header() {
   return (
-    <>
+    <> 
       <div
-        className={`${scrolled ? "shadow-md" : "shadow-sm border-b"
-          } fixed top-0 left-0 w-full right-0 z-10  bg-blue-500 transition duration-600 ease-in-out`}
+        className="w-full right-0 z-10  bg-blue-500 transition duration-600 ease-in-out"
       >
         <div className="container px-4 md:px-2 mx-auto flex justify-between items-center">
+        <div className="div lg:hidden">
+              <MobileMenu />
+            </div>
           <Logo />
-          <div className="hidden px-4 lg:block">
-            <SecondNavigation />
+          <div className="hidden lg:block">
+            <Navigation />
           </div>
           <div className="inline-flex">
-            <div className="mr-4 -mt-2 hidden md:inline-block">
-              <SecondMobileMenu />
-            </div>
-            <div className="div lg:hidden">
-              <SecondMobileMenu />
+            <div className="inline-block">
+              <CartDrawer />
             </div>
           </div>
         </div>
@@ -45,4 +29,4 @@ function SecondHeader() {
   );
 }
 
-export default SecondHeader;
+export default Header;

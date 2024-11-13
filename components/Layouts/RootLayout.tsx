@@ -2,21 +2,23 @@ import React from "react";
 import { ReactNode } from "react";
 import Footer from "../footers/Footer";
 import Header from "../headers/Header";
+import Banner from "../Sections/Banner";
 
 
-interface BranchLayoutProps {
+interface RootLayoutProps {
   children: ReactNode;
 }
 
-const BranchLayout: React.FC<BranchLayoutProps> = ({ children }) => {
+const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
 
 
   return (
     <div>
       <header>
+        <div className="container mx-auto"><Banner /></div>
         <Header />
       </header>
-      <main className="pt-12 md:pt-24 bg-white">{children}</main>
+      <main className="bg-white">{children}</main>
       <footer>
         <Footer />
       </footer>
@@ -24,4 +26,4 @@ const BranchLayout: React.FC<BranchLayoutProps> = ({ children }) => {
   );
 };
 
-export default BranchLayout;
+export default RootLayout;

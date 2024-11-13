@@ -1,50 +1,23 @@
-import { useState } from 'react'
-import { Minus, Plus, Trash2 } from 'lucide-react'
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
-import Link from 'next/link'
-import MetaData from '@/components/headers/MetaData'
-import Layout from '@/components/Layouts/Layout'
-
-
-interface CartItem {
-    id: number
-    name: string
-    price: number
-    quantity: number
-    image: string
-}
-
+import { Minus, Plus, Trash2 } from 'lucide-react';
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import Link from 'next/link';
+import MetaData from '@/components/headers/MetaData';
+import Layout from '@/components/Layouts/RootLayout';
+import { useCart } from '@/lib/cartContext';
 
 export default function ShoppingCart() {
-    const [cartItems, setCartItems] = useState<CartItem[]>([
-        { id: 1, name: "Vintage T-Shirt", price: 29.99, quantity: 2, image: "/placeholder.svg?height=100&width=100" },
-        { id: 2, name: "Denim Jeans", price: 59.99, quantity: 1, image: "/placeholder.svg?height=100&width=100" },
-        { id: 3, name: "Sneakers", price: 89.99, quantity: 1, image: "/placeholder.svg?height=100&width=100" },
-    ])
-
-    const updateQuantity = (id: number, newQuantity: number) => {
-        setCartItems(items =>
-            items.map(item =>
-                item.id === id ? { ...item, quantity: Math.max(0, newQuantity) } : item
-            )
-        )
-    }
-
-    const removeItem = (id: number) => {
-        setCartItems(items => items.filter(item => item.id !== id))
-    }
-
-    const subtotal = cartItems.reduce((sum, item) => sum + item.price * item.quantity, 0)
+    const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
+    const subtotal = getCartTotal();
 
     return (
         <>
             <MetaData
-                title="Checkout | Vegas Christian Gifts"
-                description=""
-                keywords=""
-                url="https://www.vegaschristiangifts.com/about"
-                imageUrl="https://www.vegaschristiangifts.com/assets/about-image.jpg"
+                title="Shopping Cart - Vegas Christian Gifts"
+                description="View and manage items in your shopping cart at Vegas Christian Gifts. Ready to checkout? Explore faith-inspired products and gifts now."
+                keywords="shopping cart, Vegas Christian Gifts, checkout, Christian gifts, faith-inspired products"
+                url="https://www.vegaschristiangifts.com/cart"
+                imageUrl="https://www.vegaschristiangifts.com/assets/cart-image.jpg"
                 siteName="Vegas Christian Gifts"
                 locale="en_US"
                 themeColor="#EC4899"
@@ -53,7 +26,12 @@ export default function ShoppingCart() {
                 <div className="container mx-auto px-4 py-8">
                     <h1 className="text-2xl font-bold mb-8">Shopping Cart</h1>
                     {cartItems.length === 0 ? (
-                        <p className="text-center text-gray-500">Your cart is empty</p>
+                        <div className="text-center">
+                            <p className="text-gray-500 mb-4">Your cart is empty</p>
+                            <Link href="/products">
+                                <Button>Continue Shopping</Button>
+                            </Link>
+                        </div>
                     ) : (
                         <div className="grid gap-8 md:grid-cols-3">
                             <div className="md:col-span-2">
@@ -61,10 +39,16 @@ export default function ShoppingCart() {
                                     <Card key={item.id} className="mb-4">
                                         <CardContent className="p-4">
                                             <div className="flex items-center gap-4">
-                                                <img src={item.image} alt={item.name} className="w-20 h-20 object-cover rounded" />
+                                                <img
+                                                    src={item.image}
+                                                    alt={item.name}
+                                                    className="w-20 h-20 object-cover rounded"
+                                                />
                                                 <div className="flex-grow">
                                                     <h2 className="font-semibold">{item.name}</h2>
-                                                    <p className="text-sm text-gray-500">${item.price.toFixed(2)}</p>
+                                                    <p className="text-sm text-gray-500">
+                                                        ${item.price.toFixed(2)}
+                                                    </p>
                                                 </div>
                                                 <div className="flex items-center gap-2">
                                                     <Button
@@ -88,7 +72,7 @@ export default function ShoppingCart() {
                                                 <Button
                                                     size="icon"
                                                     variant="ghost"
-                                                    onClick={() => removeItem(item.id)}
+                                                    onClick={() => removeFromCart(item.id)}
                                                     aria-label={`Remove ${item.name} from cart`}
                                                 >
                                                     <Trash2 className="h-4 w-4" />
@@ -118,10 +102,11 @@ export default function ShoppingCart() {
                                         </div>
                                     </CardContent>
                                     <CardFooter>
-                                        <Link href={'/checkout'}>
-                                            <Button className="w-full">Proceed to Checkout</Button>
+                                        <Link href="/checkout">
+                                            <Button className="w-full">
+                                                Proceed to Checkout
+                                            </Button>
                                         </Link>
-
                                     </CardFooter>
                                 </Card>
                             </div>
@@ -129,8 +114,6 @@ export default function ShoppingCart() {
                     )}
                 </div>
             </Layout>
-
         </>
-
-    )
+    );
 }

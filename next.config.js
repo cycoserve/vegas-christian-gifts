@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['firebasestorage.googleapis.com', 'fastly.picsum.photos'],
+    domains: ['firebasestorage.googleapis.com', 'fastly.picsum.photos', 'api.cycoserve.com'],
   },
 }
 
