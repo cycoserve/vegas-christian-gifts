@@ -1,9 +1,7 @@
 import React from "react";
 import { ReactNode } from "react";
-import { useRouter } from "next/router";
-import Header from "../headers/Header";
-import SecondHeader from "../headers/SecondHeader";
 import Footer from "../footers/Footer";
+import Header from "../headers/Header";
 
 
 interface BranchLayoutProps {
@@ -11,12 +9,13 @@ interface BranchLayoutProps {
 }
 
 const BranchLayout: React.FC<BranchLayoutProps> = ({ children }) => {
-  const router = useRouter();
-  const isHomePage = router.pathname === "/";
+
 
   return (
     <div>
-      <header>{isHomePage ? <SecondHeader /> : <SecondHeader />}</header>
+      <header>
+        <Header />
+      </header>
       <main className="pt-12 md:pt-24 bg-white">{children}</main>
       <footer>
         <Footer />

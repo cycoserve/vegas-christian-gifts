@@ -2,24 +2,24 @@ import React from 'react';
 import MetaData from '@/components/headers/MetaData';
 import ContactForm from '@/components/Sections/ContactForm';
 import SectionWrap from '@/components/elements/SectionWrap';
-import BranchLayout from '@/components/Layouts/BranchLayout';
+import Layout from '@/components/Layouts/Layout';
 import Spacer from '@/components/ui/Spacer';
 
 export default function ContactPage() {
   return (
     <>
-      {/* <MetaData
-        title="Contact Vegas Girl Tees | Custom Las Vegas Fashion Support"
-        description="Get in touch with Vegas Girl Tees for custom Las Vegas fashion inquiries, orders, and support. We're here to help with your Vegas style needs!"
-        keywords="Vegas Girl Tees contact, Las Vegas fashion contact, custom t-shirts inquiry, Vegas style support, contact Vegas Girl Tees"
-        url="https://www.vegasgirltees.com/contact-us"
-        imageUrl="https://www.vegasgirltees.com/assets/contact-image.jpg"
-        siteName="Vegas Girl Tees"
+      <MetaData
+        title="Vegas Christian Gifts"
+        description=""
+        keywords=""
+        url="https://www.vegaschristiangifts.com/about"
+        imageUrl="https://www.vegaschristiangifts.com/assets/about-image.jpg"
+        siteName="Vegas Christian Gifts"
         locale="en_US"
         themeColor="#EC4899"
-      /> */}
+      />
       <div className="bg-[url('/assets/contacthero-bg.jpg')] bg-cover bg-center">
-        <BranchLayout>
+        <Layout>
           <SectionWrap>
             <div className="flex flex-col lg:flex-row gap-8">
               <div className="w-full pt-4">
@@ -28,7 +28,7 @@ export default function ContactPage() {
             </div>
           </SectionWrap>
           <Spacer />
-        </BranchLayout>
+        </Layout>
       </div>
     </>
   );

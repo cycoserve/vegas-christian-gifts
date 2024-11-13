@@ -14,9 +14,9 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "*": ["./*"]
+      "@/*": ["./*"]
     },
-    "types": ["@paypal/react-paypal-js"]
+    "types": ["@paypal/react-paypal-js", "react", "node"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "db.js", "types/editorjs.d.ts", "pages/api/contact.js", "types/paypal.d.ts"],
   "exclude": ["node_modules"]

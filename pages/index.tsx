@@ -5,7 +5,7 @@ import TitleSection from "@/components/Sections/TitleSection";
 import SectionWrap from "@/components/elements/SectionWrap";
 import { NewsletterSignupComponent } from "@/components/marketing/newsletter-signup";
 import Spacer from "@/components/ui/Spacer";
-import BranchLayout from "@/components/Layouts/BranchLayout";
+import BranchLayout from "@/components/Layouts/Layout";
 import ProductCategoriesGrid from "@/components/Sections/ProductCategoryGrid";
 import MetaData from "@/components/headers/MetaData";
 
@@ -27,12 +27,12 @@ export default function Home() {
   return (
     <>
       <MetaData
-        title="About Vegas Girl Tees | Las Vegas Fashion Story"
-        description="Discover the story behind Vegas Girl Tees - your premier destination for unique Las Vegas fashion. Learn about our passion for creating custom t-shirts and accessories that capture the spirit of Vegas."
-        keywords="Vegas Girl Tees story, Las Vegas fashion brand, custom t-shirt company, Vegas style history, about Vegas Girl Tees"
-        url="https://www.vegasgirltees.com/about"
-        imageUrl="https://www.vegasgirltees.com/assets/about-image.jpg"
-        siteName="Vegas Girl Tees"
+        title="Vegas Christian Gifts"
+        description=""
+        keywords=""
+        url="https://www.vegaschristiangifts.com/about"
+        imageUrl="https://www.vegaschristiangifts.com/assets/about-image.jpg"
+        siteName="Vegas Christian Gifts"
         locale="en_US"
         themeColor="#EC4899"
       />
