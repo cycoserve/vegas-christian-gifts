@@ -15,7 +15,6 @@ const RootLayout: React.FC<RootLayoutProps> = ({ children }) => {
   return (
     <div>
       <header>
-        <div className="container mx-auto"><Banner /></div>
         <Header />
       </header>
       <main className="bg-white">{children}</main>

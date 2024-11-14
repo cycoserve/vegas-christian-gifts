@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button"
 import { Cross, Heart, PlayIcon as Pray } from 'lucide-react'
 import Link from "next/link"
+import Image from 'next/image'
 
 export default function HeroSection() {
   return (
-    <div className="relative bg-white overflow-hidden">
+    <div className="relative bg-white overflow-hidden py-12 min-h-[100vh]">
       <div className="max-w-7xl mx-auto">
         <div className="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
           <svg
@@ -24,7 +25,7 @@ export default function HeroSection() {
                 <span className="block text-blue-600 xl:inline">Faith in Bloom</span>
               </h1>
               <p className="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
-                Discover Vegas Christian Gifts' enchanting collection of mini flower pots featuring delightful trees, charming cacti, and personalized wooden plates. Spread the love of Christ with these perfect symbols of growth, faith, and new beginnings.
+                Discover Vegas Christian Gifts&apos; enchanting collection of mini flower pots featuring delightful trees, charming cacti, and personalized wooden plates. Spread the love of Christ with these perfect symbols of growth, faith, and new beginnings.
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
@@ -49,13 +50,15 @@ export default function HeroSection() {
         </div>
       </div>
       <div className="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2">
-        <img
+        <Image
           className="h-56 w-full object-cover sm:h-72 md:h-96 lg:w-full lg:h-full"
           src="/images/engravement-closeup-1.jpg"
           alt="Collection of Christian-themed mini flower pots with trees and cacti"
+          width={1024}
+          height={1024}
         />
       </div>
-      {/* <div className="absolute bottom-0 left-0 right-0 bg-blue-500 text-white py-4">
+      <div className="absolute bottom-0 left-0 right-0 bg-blue-500 text-white py-4">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-around items-center">
             <div className="flex items-center">
@@ -64,7 +67,7 @@ export default function HeroSection() {
             </div>
             <div className="flex items-center">
               <Heart className="h-6 w-6 text-yellow-400 mr-2" />
-              <span>Spread God's Love</span>
+              <span>Spread God&apos;s Love</span>
             </div>
             <div className="flex items-center">
               <Pray className="h-6 w-6 text-yellow-400 mr-2" />
@@ -72,7 +75,7 @@ export default function HeroSection() {
             </div>
           </div>
         </div>
-      </div> */}
+      </div>
     </div>
   )
 }

@@ -3,23 +3,23 @@
 export const menuItems = [
     {
       id: "1",
-      title: "Home",
-      url: "/",
+      title: "Shop",
+      url: "/products",
     },
     {
       id: "2",
-      title: "About",
+      title: "About Us",
       url: "/about",
     },
     {
       id: "3",
-      title: "Products",
-      url: "/products",
+      title: "Contact Us",
+      url: "/contact-us",
     },
     {
       id: "4",
-      title: "Contact",
-      url: "/contact-us",
+      title: "Account",
+      url: "/my-account",
     },
   ];
   
