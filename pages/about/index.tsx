@@ -23,7 +23,7 @@ export default function AboutPage() {
             <section className="mb-16">
               <h2 className="text-3xl font-bold text-blue-600 mb-6">Our Mission</h2>
               <p className="text-lg text-gray-700 mb-6">
-                At Vegas Christian Gifts, we believe in the power of faith and nature to bring joy, peace, and inspiration to people's lives. Our mission is to create unique, meaningful gifts that celebrate God's creation and help spread His love to others.
+                At Vegas Christian Gifts, we believe in the power of faith and nature to bring joy, peace, and inspiration to people&apos;s lives. Our mission is to create unique, meaningful gifts that celebrate God&apos;s creation and help spread His love to others.
               </p>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <Card>
@@ -55,13 +55,13 @@ export default function AboutPage() {
               <div className="flex flex-col md:flex-row items-center gap-8">
                 <div className="md:w-1/2">
                   <p className="text-lg text-gray-700 mb-4">
-                    Vegas Christian Gifts was born from a passion for combining the beauty of nature with the strength of faith. Our journey began when our founder, inspired by the diverse flora of the Nevada desert, saw an opportunity to create miniature gardens that could serve as daily reminders of God's love and grace.
+                    Vegas Christian Gifts was born from a passion for combining the beauty of nature with the strength of faith. Our journey began when our founder, inspired by the diverse flora of the Nevada desert, saw an opportunity to create miniature gardens that could serve as daily reminders of God&apos;s love and grace.
                   </p>
                   <p className="text-lg text-gray-700 mb-4">
                     What started as a small, home-based business has grown into a thriving company, dedicated to crafting high-quality, faith-inspired gifts that bring joy to people across the country. Our mini flower pots, featuring carefully selected trees and cacti, along with our custom-engraved wooden plates, have become beloved items in many Christian homes.
                   </p>
                   <p className="text-lg text-gray-700">
-                    Today, we continue to innovate and expand our product line, always with the goal of helping people nurture their faith and share God's love with others.
+                    Today, we continue to innovate and expand our product line, always with the goal of helping people nurture their faith and share God&apos;s love with others.
                   </p>
                 </div>
                 <div className="md:w-1/2">
@@ -81,7 +81,7 @@ export default function AboutPage() {
                   <CardContent className="p-6">
                     <h3 className="text-xl font-semibold mb-4">Mini Flower Pots</h3>
                     <p className="text-gray-700 mb-4">
-                      Our signature mini flower pots are more than just decorative items. Each one is a tiny ecosystem, carefully designed to represent different aspects of faith and spiritual growth. From miniature olive trees symbolizing peace to resilient cacti representing perseverance, our pots are living reminders of God's teachings.
+                      Our signature mini flower pots are more than just decorative items. Each one is a tiny ecosystem, carefully designed to represent different aspects of faith and spiritual growth. From miniature olive trees symbolizing peace to resilient cacti representing perseverance, our pots are living reminders of God&apos;s teachings.
                     </p>
                     <ul className="list-disc list-inside text-gray-700">
                       <li>Various plant options: trees, cacti, and herbs</li>

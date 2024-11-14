@@ -13,7 +13,7 @@ export default function Footer() {
               alt="Vegas Christian Gifts Logo"
             />
             <p className="text-gray-500 text-base">
-              Spreading faith through nature's beauty. Our mini flower pots and custom engraved plates are perfect for sharing God's love.
+              Spreading faith through nature&apos;s beauty. Our mini flower pots and custom engraved plates are perfect for sharing God&apos;s love.
             </p>
             <div className="flex space-x-6">
               <a href="#" className="text-gray-400 hover:text-blue-500">
