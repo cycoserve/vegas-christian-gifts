@@ -1,5 +1,5 @@
 declare module '@paypal/react-paypal-js' {
-  import { ReactElement } from 'react';
+  import { ReactElement, ReactNode } from 'react';
 
   export interface PayPalScriptOptions {
     'client-id': string;
@@ -24,6 +24,11 @@ declare module '@paypal/react-paypal-js' {
     };
   }
 
-  export function PayPalScriptProvider(props: { options: PayPalScriptOptions }): ReactElement;
+  export interface PayPalScriptProviderProps {
+    options: PayPalScriptOptions;
+    children: ReactNode;
+  }
+
+  export function PayPalScriptProvider(props: PayPalScriptProviderProps): ReactElement;
   export function PayPalButtons(props: PayPalButtonsComponentProps): ReactElement;
 }

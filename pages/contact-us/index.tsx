@@ -16,7 +16,6 @@ export default function ContactPage() {
         imageUrl="https://www.vegaschristiangifts.com/assets/about-image.jpg"
         siteName="Vegas Christian Gifts"
         locale="en_US"
-        themeColor="#EC4899"
       />
       <div className="bg-[url('/assets/contacthero-bg.jpg')] bg-cover bg-center">
         <Layout>

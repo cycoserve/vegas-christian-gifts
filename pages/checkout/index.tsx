@@ -1,14 +1,19 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useCart } from '@/lib/cartContext'
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import RootLayout from '@/components/Layouts/RootLayout'
 import MetaData from '@/components/headers/MetaData'
+import { toast } from '@/components/ui/use-toast'
 // import { Icons } from "@/components/icons"
 
 export default function Component() {
   const [paymentMethod, setPaymentMethod] = useState('credit')
+  const { cartItems, getCartTotal } = useCart()
+  const subtotal = getCartTotal()
 
   return (
     <>
@@ -20,7 +25,6 @@ export default function Component() {
         imageUrl="https://www.vegaschristiangifts.com/assets/checkout-image.jpg"
         siteName="Vegas Christian Gifts"
         locale="en_US"
-        themeColor="#EC4899"
       />
 
       <RootLayout>
@@ -98,26 +102,72 @@ export default function Component() {
                 <div className="bg-gray-50 p-6 rounded-lg shadow-md">
                   <h3 className="text-xl font-semibold mb-4">Order Summary</h3>
                   <div className="space-y-2 mb-4">
+                    {cartItems.map(item => (
+                      <div key={item.id} className="flex justify-between">
+                        <span>{item.name} (x{item.quantity})</span>
+                        <span>${(item.price * item.quantity).toFixed(2)}</span>
+                      </div>
+                    ))}
                     <div className="flex justify-between">
                       <span>Subtotal</span>
-                      <span>$49.99</span>
+                      <span>${subtotal.toFixed(2)}</span>
                     </div>
                     <div className="flex justify-between">
                       <span>Shipping</span>
-                      <span>$5.00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Tax</span>
-                      <span>$4.50</span>
+                      <span>Free</span>
                     </div>
                     <div className="flex justify-between font-semibold text-lg">
                       <span>Total</span>
-                      <span>$59.49</span>
+                      <span>${subtotal.toFixed(2)}</span>
                     </div>
                   </div>
-                  <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-semibold">
-                    Place Order
-                  </Button>
+                  {paymentMethod === 'paypal' ? (
+                    <PayPalScriptProvider options={{ 
+                      "client-id": process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID!,
+                      currency: "USD",
+                      components: "buttons,marks"
+                    }}>
+                      <PayPalButtons
+                        createOrder={async () => {
+                          const response = await fetch('/api/paypal/create-order', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              items: cartItems,
+                              total: subtotal
+                            }),
+                          });
+                          const order = await response.json();
+                          return order.id;
+                        }}
+                        onApprove={async (data) => {
+                          const response = await fetch('/api/paypal/capture-order', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                              orderID: data.orderID,
+                            }),
+                          });
+                          const orderData = await response.json();
+                          if (orderData.status === 'success') {
+                            toast({
+                              title: "Payment successful",
+                              description: "Thank you for your purchase!",
+                              duration: 5000,
+                            });
+                          }
+                        }}
+                      />
+                    </PayPalScriptProvider>
+                  ) : (
+                    <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-semibold">
+                      Place Order
+                    </Button>
+                  )}
                 </div>
                 <div className="mt-6 text-center text-sm text-gray-500">
                   <p>Your order is protected by our secure payment system</p>

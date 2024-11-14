@@ -1,25 +1,21 @@
-import { db } from '../../utils/firebase';
-import { useState, useEffect } from 'react';
-import { collection, getDocs, DocumentData, QueryDocumentSnapshot } from 'firebase/firestore';
+import React, { useState, useEffect } from 'react';
+import { Product } from '../../types/product';
 import Image from 'next/image';
-import { useCart } from '../../lib/cartContext';
-import { useToast } from '@/components/ui/use-toast';
+import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { Plus, Minus } from 'lucide-react';
+import { useCart } from '@/lib/cartContext';
+import { useWishlist } from '@/lib/wishlistContext';
+import { useToast } from '@/components/ui/use-toast';
+import { Heart } from 'lucide-react';
+import slugify from 'slugify';
+import { db } from '@/utils/firebase';
+import { collection, getDocs } from 'firebase/firestore';
 
-interface Product {
-  id: string;
-  name: string;
-  description: string;
-  price: number;
-  images: string[];
-}
-
-function ProductList() {
+const ProductsList: React.FC = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [quantities, setQuantities] = useState<{ [key: string]: number }>({});
+  const [loading, setLoading] = useState(true);
   const { addToCart } = useCart();
+  const { addToWishlist, removeFromWishlist, isInWishlist } = useWishlist();
   const { toast } = useToast();
 
   useEffect(() => {
@@ -27,63 +23,64 @@ function ProductList() {
       try {
         const productsRef = collection(db, 'products');
         const snapshot = await getDocs(productsRef);
-        const productsList = snapshot.docs.map((doc: QueryDocumentSnapshot<DocumentData>) => {
-          const data = doc.data();
-          return {
-            id: doc.id,
-            name: data.name || '',
-            description: data.description || '',
-            price: data.price || 0,
-            images: data.images || []
-          };
-        });
+        const productsList = snapshot.docs.map(doc => ({
+          id: doc.id,
+          ...doc.data()
+        })) as Product[];
         setProducts(productsList);
-        // Initialize quantities
-        const initialQuantities: { [key: string]: number } = {};
-        productsList.forEach(product => {
-          initialQuantities[product.id] = 1;
-        });
-        setQuantities(initialQuantities);
-      } catch (err) {
-        setError('Failed to fetch products: ' + (err as Error).message);
+        setLoading(false);
+      } catch (error) {
+        console.error('Error fetching products:', error);
+        setLoading(false);
       }
     };
+
     fetchProducts();
   }, []);
 
-  const updateQuantity = (productId: string, delta: number) => {
-    setQuantities(prev => ({
-      ...prev,
-      [productId]: Math.max(1, (prev[productId] || 1) + delta)
-    }));
-  };
-
   const handleAddToCart = (product: Product) => {
-    const quantity = quantities[product.id] || 1;
     addToCart({
       id: product.id,
       name: product.name,
       price: product.price,
-      quantity: quantity,
+      quantity: 1,
       image: product.images[0]
     });
 
     toast({
-      title: "Added to cart",
-      description: `${quantity}x ${product.name} added to your cart`,
+      title: "Added to Cart",
+      description: (
+        <div className="flex flex-col gap-1">
+          <span className="font-semibold">{product.name}</span>
+          <span className="text-green-600">${product.price.toFixed(2)}</span>
+        </div>
+      ),
       duration: 2000,
+      className: "bg-white border-2 border-green-500",
     });
   };
 
-  if (error) {
-    return <div>Error: {error}</div>;
+  if (loading) {
+    return (
+      <div className="container mx-auto  px-4 my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+        {Array.from({ length: 12 }).map((_, index) => (
+          <div key={index} className="animate-pulse bg-gray-200 rounded-lg p-4 shadow-sm mb-8">
+            <div className="relative h-64 mb-4 bg-gray-300 rounded-md"></div>
+            <div className="h-4 bg-gray-300 rounded w-3/4 mb-2"></div>
+            <div className="h-4 bg-gray-300 rounded w-1/2 mb-4"></div>
+            <div className="h-4 bg-gray-300 rounded w-1/3"></div>
+          </div>
+        ))}
+      </div>
+    );
   }
 
   return (
-    <div className="max-w-7xl mx-auto py-12 px-4">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {products.map(product => (
-          <div key={product.id} className="border rounded-lg p-4 shadow-sm">
+    <div className="py-12 px-4">
+          <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {products.map((product) => (
+        <div key={product.id} className="border rounded-lg p-4 shadow-sm mb-8">
+          <Link href={`/products/${slugify(product.name, { lower: true })}`}>
             <div className="relative h-64 mb-4">
               <Image 
                 src={product.images[0]} 
@@ -93,40 +90,38 @@ function ProductList() {
               />
             </div>
             <h2 className="text-xl font-semibold mb-2">{product.name}</h2>
-            <p className="text-gray-600 mb-2">{product.description}</p>
-            <p className="text-lg font-bold mb-4">${product.price.toFixed(2)}</p>
-            
-            <div className="flex items-center gap-4 mb-4">
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => updateQuantity(product.id, -1)}
-              >
-                <Minus className="h-4 w-4" />
-              </Button>
-              <span className="text-lg font-medium">
-                {quantities[product.id] || 1}
-              </span>
-              <Button
-                variant="outline"
-                size="icon"
-                onClick={() => updateQuantity(product.id, 1)}
-              >
-                <Plus className="h-4 w-4" />
-              </Button>
-            </div>
+          </Link>
+          <p className="text-gray-600 mb-2">{product.description}</p>
+          <p className="text-lg font-bold mb-4">${product.price.toFixed(2)}</p>
 
+          <div className="flex gap-2">
             <Button 
-              className="w-full"
+              className="flex-1"
               onClick={() => handleAddToCart(product)}
             >
               Add to Cart
             </Button>
+            <Button
+              variant="outline"
+              size="icon"
+              className={isInWishlist(product.id) ? 'text-red-500' : ''}
+              onClick={() => {
+                if (isInWishlist(product.id)) {
+                  removeFromWishlist(product.id);
+                } else {
+                  addToWishlist(product);
+                }
+              }}
+            >
+              <Heart className="h-4 w-4" />
+            </Button>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  );
-}
+    </div>
 
-export default ProductList;
+  );
+};
+
+export default ProductsList;

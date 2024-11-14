@@ -8,7 +8,6 @@ const MetaData = ({
   imageUrl = "https://www.vegaschristiangifts.com/assets/og-image.jpg",
   siteName = "Vegas Christian Gifts",
   locale = "en_US",
-  themeColor = "#4CAF50"
 }) => {
   return (
     <Head>
@@ -39,8 +38,8 @@ const MetaData = ({
       <meta name="twitter:description" content={description} />
       <meta name="twitter:image" content={imageUrl} />
 
-      {/* Mobile theme color */}
-      <meta name="theme-color" content={themeColor} />
+      {/* Hardcoded theme color */}
+      <meta name="theme-color" content="#2563eb" />
 
       {/* Canonical Link and Favicon */}
       <link rel="canonical" href={url} />

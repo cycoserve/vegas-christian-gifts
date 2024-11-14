@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { ShoppingCart } from "lucide-react"; // Import the shopping cart icon
-import { mobileMenuItems } from './data/mobileMenuItems';
 import CartComponent from '@/components/elements/CartComponent'
 
 const CartDrawer = () => {
@@ -36,8 +35,7 @@ const CartDrawer = () => {
                   <div className="w-full py-12">
 
  
-                    {/* <CartComponent /> */}
-
+                    <CartComponent />
                   </div>
             </div>
           </div>

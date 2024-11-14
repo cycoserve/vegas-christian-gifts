@@ -1,5 +1,6 @@
 import { Facebook, Instagram, Twitter, Mail, Phone, MapPin, Clock } from 'lucide-react'
 import Link from 'next/link'
+import Image from 'next/image'
 
 export default function Footer() {
   return (
@@ -7,10 +8,12 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8">
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
-            <img
+            <Image
               className="h-10"
               src="/placeholder.svg?height=40&width=160"
               alt="Vegas Christian Gifts Logo"
+              width={160}
+              height={40}
             />
             <p className="text-gray-500 text-base">
               Spreading faith through nature&apos;s beauty. Our mini flower pots and custom engraved plates are perfect for sharing God&apos;s love.

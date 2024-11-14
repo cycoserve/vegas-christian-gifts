@@ -2,11 +2,9 @@ import RootLayout from "@/components/Layouts/RootLayout";
 import Hero from "@/components/Sections/Hero";
 import MetaData from "@/components/headers/MetaData";
 import ProductList from "@/components/products/productsList";
-
+import Features from "../components/Sections/Features";
 
 export default function Home() {
-
-
   return (
     <>
       <MetaData
@@ -17,13 +15,12 @@ export default function Home() {
         imageUrl="https://www.vegaschristiangifts.com/assets/homepage-image.jpg"
         siteName="Vegas Christian Gifts"
         locale="en_US"
-        themeColor="#EC4899"
       />
-
       <RootLayout>
         <Hero />
+        <Features />
         <ProductList />
       </RootLayout>
     </>
   );
-}
+}

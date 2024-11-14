@@ -31,38 +31,8 @@ const nextConfig = {
   },
   env: {
     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
+    NEXT_PUBLIC_API_ACCESS_KEY: process.env.API_ACCESS_KEY,
   },
 };
 
-module.exports = nextConfig;
-
-
-
-
-
-// /** @type {import('next').NextConfig} */
-// const nextConfig = {
-//   reactStrictMode: true,
-//   images: {
-//     domains: ['firebasestorage.googleapis.com', 'fastly.picsum.photos', 'api.cycoserve.com'],
-//   },
-// }
-
-// webpack: (config, { isServer }) => {
-//   // Only run this on the server
-//   if (isServer) {
-//     config.resolve.fallback = config.resolve.fallback || {};
-//     config.resolve.fallback.fs = false;
-//   }
-
-//   return config;
-// },
-
-// module.exports = {
-//   env: {
-//     OPENAI_API_KEY: process.env.OPENAI_API_KEY,
-//   },
-// }
-
-
-// module.exports = nextConfig
+module.exports = nextConfig;

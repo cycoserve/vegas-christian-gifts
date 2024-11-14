@@ -1,10 +1,12 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
+import Link from 'next/link';
+import slugify from 'slugify';
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import Link from 'next/link';
 import MetaData from '@/components/headers/MetaData';
 import Layout from '@/components/Layouts/RootLayout';
 import { useCart } from '@/lib/cartContext';
+import Image from 'next/image'
 
 export default function ShoppingCart() {
     const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
@@ -20,7 +22,6 @@ export default function ShoppingCart() {
                 imageUrl="https://www.vegaschristiangifts.com/assets/cart-image.jpg"
                 siteName="Vegas Christian Gifts"
                 locale="en_US"
-                themeColor="#EC4899"
             />
             <Layout>
                 <div className="container mx-auto px-4 py-8">
@@ -39,13 +40,17 @@ export default function ShoppingCart() {
                                     <Card key={item.id} className="mb-4">
                                         <CardContent className="p-4">
                                             <div className="flex items-center gap-4">
-                                                <img
+                                                <Image
                                                     src={item.image}
                                                     alt={item.name}
                                                     className="w-20 h-20 object-cover rounded"
+                                                    width={200}
+                                                    height={200}
                                                 />
                                                 <div className="flex-grow">
-                                                    <h2 className="font-semibold">{item.name}</h2>
+                                                    <Link href={`/products/${slugify(item.name, { lower: true })}`}>
+                                                    <h2 className="font-semibold hover:text-blue-600">{item.name}</h2>
+                                                </Link>
                                                     <p className="text-sm text-gray-500">
                                                         ${item.price.toFixed(2)}
                                                     </p>

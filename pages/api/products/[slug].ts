@@ -1,6 +1,8 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
 import { db } from '../../../utils/firebase'
-import { doc, getDoc } from 'firebase/firestore'
+import { collection, getDocs, query, where } from 'firebase/firestore'
+import slugify from 'slugify'
+import type { Product } from '../../../types/product'
 
 export default async function handler(
   req: NextApiRequest,
@@ -11,19 +13,17 @@ export default async function handler(
       const { slug } = req.query
       
       if (!slug || typeof slug !== 'string') {
-        return res.status(400).json({ error: 'Product ID is required' })
+        return res.status(400).json({ error: 'Invalid slug' })
       }
 
-      const productRef = doc(db, 'products', slug)
-      const productSnap = await getDoc(productRef)
+      const productsRef = collection(db, 'products')
+      const snapshot = await getDocs(productsRef)
+      const product = snapshot.docs
+        .map(doc => ({ id: doc.id, ...doc.data() } as Product))
+        .find(product => slugify(product.name || '', { lower: true }) === slug)
 
-      if (!productSnap.exists()) {
+      if (!product) {
         return res.status(404).json({ error: 'Product not found' })
-      }
-
-      const product = {
-        id: productSnap.id,
-        ...productSnap.data()
       }
 
       res.status(200).json(product)

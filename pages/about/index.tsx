@@ -1,5 +1,6 @@
 import MetaData from "@/components/headers/MetaData"
 import RootLayout from "@/components/Layouts/RootLayout"
+import Image from 'next/image'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Cross, Heart, Gift, Leaf, Globe, Phone } from 'lucide-react'
@@ -15,7 +16,6 @@ export default function AboutPage() {
         imageUrl="https://www.vegaschristiangifts.com/assets/about-image.jpg"
         siteName="Vegas Christian Gifts"
         locale="en_US"
-        themeColor="#EC4899"
       />
       <RootLayout>
         <div className="min-h-screen bg-white">
@@ -65,10 +65,12 @@ export default function AboutPage() {
                   </p>
                 </div>
                 <div className="md:w-1/2">
-                  <img
+                  <Image
                     src="/placeholder.svg?height=400&width=600"
                     alt="Founder working on mini flower pots"
                     className="rounded-lg shadow-lg"
+                    width={400}
+                    height={600}
                   />
                 </div>
               </div>

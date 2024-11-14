@@ -1,4 +1,5 @@
 import { ShoppingCartIcon, UserIcon } from '@heroicons/react/20/solid';
+import { Heart } from 'lucide-react';
 import Link from 'next/link';
 
 export default function Banner() {
@@ -24,7 +25,7 @@ export default function Banner() {
 
       {/* Center Menu Links */}
       <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-        <Link href="/shop" className="hover:text-blue-600 transition-colors duration-200">
+        <Link href="/products" className="hover:text-blue-600 transition-colors duration-200">
           Shop
         </Link>
         <Link href="/about" className="hover:text-blue-600 transition-colors duration-200">
@@ -36,6 +37,10 @@ export default function Banner() {
         <Link href="/account" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
           <UserIcon className="w-5 h-5" />
           Account
+        </Link>
+        <Link href="/wishlist" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
+          <Heart className="w-5 h-5" />
+          Wishlist
         </Link>
         <Link href="/cart" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
           <ShoppingCartIcon className="w-5 h-5" />
