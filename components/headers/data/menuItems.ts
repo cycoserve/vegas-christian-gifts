@@ -19,7 +19,7 @@ export const menuItems = [
     {
       id: "4",
       title: "Account",
-      url: "/my-account",
+      url: "/account",
     },
   ];
   

@@ -1,0 +1,102 @@
+/* styles/Account.module.css */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.container {
+  @apply min-h-screen flex flex-col items-center justify-between bg-background text-foreground p-4;
+}
+
+.header {
+  @apply w-full flex justify-between items-center mb-8;
+}
+
+.title {
+  @apply text-3xl font-bold;
+}
+
+.themeToggle {
+  @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-700;
+}
+
+.main {
+  @apply w-full flex flex-col items-center justify-center gap-8;
+}
+
+.profileSection,
+.ordersSection {
+  @apply w-full max-w-4xl;
+}
+
+.sectionTitle {
+  @apply text-2xl font-bold mb-4;
+}
+
+.profileCard {
+  @apply flex flex-col md:flex-row items-center p-6 bg-card rounded-lg shadow-md;
+}
+
+.profileImage {
+  @apply w-48 h-48 rounded-full object-cover mr-0 md:mr-6;
+}
+
+.profileDetails {
+  @apply flex flex-col items-center md:items-start;
+}
+
+.name {
+  @apply text-xl font-semibold mb-2;
+}
+
+.email {
+  @apply mb-4;
+}
+
+.editButton {
+  @apply bg-secondary text-primary px-4 py-2 rounded-lg hover:bg-secondary-700;
+}
+
+.ordersGrid {
+  @apply grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4;
+}
+
+.orderCard {
+  @apply p-6 bg-card rounded-lg shadow-md;
+}
+
+.orderId {
+  @apply text-lg font-bold mb-2;
+}
+
+.orderDate,
+.orderStatus,
+.orderTotal {
+  @apply mb-2;
+}
+
+.viewButton {
+  @apply bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-700;
+}
+
+.footer {
+  @apply w-full text-center mt-8;
+}
+
+/* Light Theme */
+.light {
+  --background: 240 10% 100%;
+  --foreground: 240 10% 3.9%;
+  --primary: 240 5.9% 10%;
+  --secondary: 240 4.8% 95.9%;
+  --card: 240 4.8% 95.9%;
+}
+
+/* Dark Theme */
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --primary: 0 0% 98%;
+  --secondary: 240 3.7% 15.9%;
+  --card: 240 3.7% 15.9%;
+}

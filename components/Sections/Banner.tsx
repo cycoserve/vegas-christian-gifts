@@ -1,8 +1,34 @@
+// components/Banner.tsx
+
 import { ShoppingCartIcon, UserIcon } from '@heroicons/react/20/solid';
 import { Heart } from 'lucide-react';
 import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
 
-export default function Banner() {
+const menuItems = [
+  {
+    label: 'Shop',
+    href: '/products',
+    icon: <ShoppingCartIcon className="w-5 h-5" />,
+  },
+  {
+    label: 'Account',
+    href: '/account',
+    icon: <UserIcon className="w-5 h-5" />,
+  },
+  {
+    label: 'Wishlist',
+    href: '/wishlist',
+    icon: <Heart className="w-5 h-5" />,
+  },
+  {
+    label: 'Cart',
+    href: '/cart',
+    icon: <ShoppingCartIcon className="w-5 h-5" />,
+  },
+];
+
+const Banner = () => {
   return (
     <div className="relative isolate flex items-center justify-between gap-x-4 bg-gray-50 px-4 py-2 border-b border-gray-200 shadow-sm sm:px-6">
       {/* Gradient Background */}
@@ -25,38 +51,26 @@ export default function Banner() {
 
       {/* Center Menu Links */}
       <nav className="hidden md:flex gap-6 text-sm font-medium text-gray-700">
-        <Link href="/products" className="hover:text-blue-600 transition-colors duration-200">
-          Shop
-        </Link>
-        <Link href="/about" className="hover:text-blue-600 transition-colors duration-200">
-          About Us
-        </Link>
-        <Link href="/contact" className="hover:text-blue-600 transition-colors duration-200">
-          Contact
-        </Link>
-        <Link href="/account" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
-          <UserIcon className="w-5 h-5" />
-          Account
-        </Link>
-        <Link href="/wishlist" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
-          <Heart className="w-5 h-5" />
-          Wishlist
-        </Link>
-        <Link href="/cart" className="flex items-center gap-1 hover:text-blue-600 transition-colors duration-200">
-          <ShoppingCartIcon className="w-5 h-5" />
-          Cart
-        </Link>
+        {menuItems.map((item, index) => (
+          <Link key={index} href={item.href} className="hover:text-blue-600 transition-colors duration-200 flex items-center gap-1">
+            {item.icon}
+            {item.label}
+          </Link>
+        ))}
       </nav>
 
       {/* Right Section - Icons for Mobile */}
       <div className="flex md:hidden items-center gap-4">
-        <Link href="/shop" className="text-gray-900 hover:text-blue-600 transition-colors duration-200">
-          <ShoppingCartIcon className="w-5 h-5" />
-        </Link>
-        <Link href="/account" className="text-gray-900 hover:text-blue-600 transition-colors duration-200">
-          <UserIcon className="w-5 h-5" />
-        </Link>
+        {menuItems.map((item, index) => (
+          item.icon && (
+            <Link key={index} href={item.href} className="text-gray-900 hover:text-blue-600 transition-colors duration-200">
+              {item.icon}
+            </Link>
+          )
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default Banner;
