@@ -1,12 +1,12 @@
 import RootLayout from '../../components/Layouts/RootLayout';
 import Head from 'next/head';
+import { Button } from '@/components/ui/button';
 import { useState, useEffect } from 'react';
 import { auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { useWishlist } from '../../lib/wishlistContext';
-
-
-
+import { Trash2 } from 'lucide-react';
+import Image from 'next/image';
 
 const Account = () => {
     const [isSignUp, setIsSignUp] = useState(false);
@@ -82,20 +82,47 @@ const Account = () => {
 
                             <section className="w-full">
                                 <h2 className="text-2xl font-bold mb-4">My Wishlist ({wishlist.length} items)</h2>
-                                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                                <div className="grid grid-cols-1 gap-4">
                                     {wishlist.map((item) => (
-                                        <div key={item.id} className="p-6 bg-card rounded-lg shadow-md relative">
-                                            <button 
-                                                onClick={() => removeFromWishlist(item.id)}
-                                                className="absolute top-2 right-2 p-2 text-gray-500 hover:text-red-500 transition-colors"
-                                                aria-label="Remove from wishlist"
-                                            >
-                                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
-                                            </button>
-                                            <h3 className="text-lg font-bold mb-2">{item.name}</h3>
-                                            <p className="mb-2">${item.price}</p>
+                                        <div key={item.id} className="p-4 bg-card rounded-lg shadow-md hover:shadow-lg transition-shadow duration-200">
+                                            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+                                                <div className="relative w-full sm:w-32 h-32 flex-shrink-0 overflow-hidden rounded-md bg-gray-100">
+                                                    {item.images && item.images.length > 0 ? (
+                                                        <Image
+                                                            src={item.images[0]}
+                                                            alt={item.name}
+                                                            fill
+                                                            className="object-cover hover:scale-105 transition-transform duration-200"
+                                                            sizes="(max-width: 640px) 100vw, 128px"
+                                                        />
+                                                    ) : (
+                                                        <div className="w-full h-full flex items-center justify-center">
+                                                            <span className="text-gray-400">No image</span>
+                                                        </div>
+                                                    )}
+                                                </div>
+                                                <div className="flex-grow space-y-2">
+                                                    <h3 className="text-lg font-bold line-clamp-2">{item.name}</h3>
+                                                    <p className="text-xl font-semibold text-primary">${item.price}</p>
+                                                </div>
+                                                <div className="flex items-center sm:self-start mt-2 sm:mt-0">
+                                                    <Button 
+                                                        variant="ghost"
+                                                        onClick={() => removeFromWishlist(item.id)}
+                                                        className="p-2 text-gray-500 hover:text-red-500 hover:bg-red-50 transition-colors rounded-full"
+                                                        aria-label="Remove from wishlist"
+                                                    >
+                                                        <Trash2 className="h-5 w-5" />
+                                                    </Button>
+                                                </div>
+                                            </div>
                                         </div>
                                     ))}
+                                    {wishlist.length === 0 && (
+                                        <div className="text-center p-8 bg-card rounded-lg">
+                                            <p className="text-gray-500">Your wishlist is empty</p>
+                                        </div>
+                                    )}
                                 </div>
                             </section>
                         </>
@@ -106,7 +133,7 @@ const Account = () => {
                             </h2>
                             <form onSubmit={handleAuth} className="space-y-4">
                                 {error && (
-                                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                                    <div className="bg-red-100 text-red-600 p-3 rounded-lg mb-4">
                                         {error}
                                     </div>
                                 )}
