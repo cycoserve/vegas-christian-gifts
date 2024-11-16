@@ -5,13 +5,16 @@ import { auth } from '../../utils/firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut } from 'firebase/auth';
 import { useWishlist } from '../../lib/wishlistContext';
 
+
+
+
 const Account = () => {
     const [isSignUp, setIsSignUp] = useState(false);
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const [user, setUser] = useState(auth.currentUser);
-    const { wishlist, isLoading } = useWishlist();
+    const { wishlist, isLoading, removeFromWishlist } = useWishlist();
 
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -81,7 +84,14 @@ const Account = () => {
                                 <h2 className="text-2xl font-bold mb-4">My Wishlist ({wishlist.length} items)</h2>
                                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                                     {wishlist.map((item) => (
-                                        <div key={item.id} className="p-6 bg-card rounded-lg shadow-md">
+                                        <div key={item.id} className="p-6 bg-card rounded-lg shadow-md relative">
+                                            <button 
+                                                onClick={() => removeFromWishlist(item.id)}
+                                                className="absolute top-2 right-2 p-2 text-gray-500 hover:text-red-500 transition-colors"
+                                                aria-label="Remove from wishlist"
+                                            >
+                                               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-trash-2"><path d="M3 6h18"/><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"/><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"/><line x1="10" x2="10" y1="11" y2="17"/><line x1="14" x2="14" y1="11" y2="17"/></svg>
+                                            </button>
                                             <h3 className="text-lg font-bold mb-2">{item.name}</h3>
                                             <p className="mb-2">${item.price}</p>
                                         </div>

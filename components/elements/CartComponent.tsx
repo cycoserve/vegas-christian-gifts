@@ -1,15 +1,55 @@
-import React from 'react'
+import React, { useState } from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from '../ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
 import Link from 'next/link';
-import { useCart } from '@/lib/cartContext';
-import Image from 'next/image'
+import { useCart } from '../../lib/cartContext';
+import Image from 'next/image';
 import slugify from 'slugify';
+import { useToast } from '../ui/use-toast';
 
 function CartComponent() {
     const { cartItems, updateQuantity, removeFromCart, getCartTotal } = useCart();
+    const { toast } = useToast();
+    const [loading, setLoading] = useState<string | null>(null);
     const subtotal = getCartTotal();
+
+    const handleUpdateQuantity = async (itemId: string, newQuantity: number) => {
+        try {
+            setLoading(`update-${itemId}`);
+            await updateQuantity(itemId, newQuantity);
+        } catch (error) {
+            console.error('Error updating quantity:', error);
+            toast({
+                title: "Error",
+                description: "Failed to update quantity. Please try again.",
+                variant: "destructive",
+            });
+        } finally {
+            setLoading(null);
+        }
+    };
+
+    const handleRemoveFromCart = async (itemId: string) => {
+        try {
+            setLoading(`remove-${itemId}`);
+            await removeFromCart(itemId);
+            toast({
+                title: "Item Removed",
+                description: "Item has been removed from your cart.",
+                duration: 2000,
+            });
+        } catch (error) {
+            console.error('Error removing item:', error);
+            toast({
+                title: "Error",
+                description: "Failed to remove item. Please try again.",
+                variant: "destructive",
+            });
+        } finally {
+            setLoading(null);
+        }
+    };
 
     return (
         <>
@@ -47,7 +87,8 @@ function CartComponent() {
                                                 <Button
                                                     size="icon"
                                                     variant="outline"
-                                                    onClick={() => updateQuantity(item.id, item.quantity - 1)}
+                                                    onClick={() => handleUpdateQuantity(item.id, item.quantity - 1)}
+                                                    disabled={loading === `update-${item.id}`}
                                                     aria-label={`Decrease quantity of ${item.name}`}
                                                 >
                                                     <Minus className="h-4 w-4" />
@@ -56,7 +97,8 @@ function CartComponent() {
                                                 <Button
                                                     size="icon"
                                                     variant="outline"
-                                                    onClick={() => updateQuantity(item.id, item.quantity + 1)}
+                                                    onClick={() => handleUpdateQuantity(item.id, item.quantity + 1)}
+                                                    disabled={loading === `update-${item.id}`}
                                                     aria-label={`Increase quantity of ${item.name}`}
                                                 >
                                                     <Plus className="h-4 w-4" />
@@ -65,7 +107,8 @@ function CartComponent() {
                                             <Button
                                                 size="icon"
                                                 variant="ghost"
-                                                onClick={() => removeFromCart(item.id)}
+                                                onClick={() => handleRemoveFromCart(item.id)}
+                                                disabled={loading === `remove-${item.id}`}
                                                 aria-label={`Remove ${item.name} from cart`}
                                             >
                                                 <Trash2 className="h-4 w-4" />
@@ -107,7 +150,7 @@ function CartComponent() {
                 )}
             </div>
         </>
-    )
+    );
 }
 
 export default CartComponent;

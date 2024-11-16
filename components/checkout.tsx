@@ -1,12 +1,13 @@
 import { useState } from 'react'
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Label } from "@/components/ui/label"
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
+import { Button } from '../components/ui/button'
+import { Input } from '../components/ui/input'
+import { Label } from '../components/ui/label'
+import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group'
 import { CreditCard, ShoppingCartIcon as Paypal } from 'lucide-react'
 
 export function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState('credit')
+  const [useShippingAsBilling, setUseShippingAsBilling] = useState(true)
 
   return (
     <div className="min-h-screen bg-white">
@@ -20,38 +21,87 @@ export function Checkout() {
         <div className="grid md:grid-cols-2 gap-8">
           <div className="space-y-6">
             <div>
-              <h3 className="text-xl font-semibold mb-4">Billing Information</h3>
+              <h3 className="text-xl font-semibold mb-4">Shipping Information</h3>
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="first-name">First Name</Label>
-                    <Input id="first-name" placeholder="John" />
+                    <Label htmlFor="shipping-first-name">First Name</Label>
+                    <Input id="shipping-first-name" placeholder="John" />
                   </div>
                   <div>
-                    <Label htmlFor="last-name">Last Name</Label>
-                    <Input id="last-name" placeholder="Doe" />
+                    <Label htmlFor="shipping-last-name">Last Name</Label>
+                    <Input id="shipping-last-name" placeholder="Doe" />
                   </div>
                 </div>
                 <div>
-                  <Label htmlFor="email">Email</Label>
-                  <Input id="email" type="email" placeholder="john.doe@example.com" />
+                  <Label htmlFor="shipping-email">Email</Label>
+                  <Input id="shipping-email" type="email" placeholder="john.doe@example.com" />
                 </div>
                 <div>
-                  <Label htmlFor="address">Address</Label>
-                  <Input id="address" placeholder="1234 Main St" />
+                  <Label htmlFor="shipping-address">Address</Label>
+                  <Input id="shipping-address" placeholder="1234 Main St" />
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   <div>
-                    <Label htmlFor="city">City</Label>
-                    <Input id="city" placeholder="Las Vegas" />
+                    <Label htmlFor="shipping-city">City</Label>
+                    <Input id="shipping-city" placeholder="Las Vegas" />
                   </div>
                   <div>
-                    <Label htmlFor="zip">ZIP Code</Label>
-                    <Input id="zip" placeholder="89101" />
+                    <Label htmlFor="shipping-zip">ZIP Code</Label>
+                    <Input id="shipping-zip" placeholder="89101" />
                   </div>
                 </div>
               </div>
             </div>
+
+            <div>
+              <h3 className="text-xl font-semibold mb-4">Billing Information</h3>
+              <div className="mb-4">
+                <label className="flex items-center space-x-2 cursor-pointer">
+                  <input
+                    type="checkbox"
+                    checked={useShippingAsBilling}
+                    onChange={(e) => setUseShippingAsBilling(e.target.checked)}
+                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                  />
+                  <span className="text-sm text-gray-700">Same as shipping address</span>
+                </label>
+              </div>
+              
+              {!useShippingAsBilling && (
+                <div className="space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="billing-first-name">First Name</Label>
+                      <Input id="billing-first-name" placeholder="John" />
+                    </div>
+                    <div>
+                      <Label htmlFor="billing-last-name">Last Name</Label>
+                      <Input id="billing-last-name" placeholder="Doe" />
+                    </div>
+                  </div>
+                  <div>
+                    <Label htmlFor="billing-email">Email</Label>
+                    <Input id="billing-email" type="email" placeholder="john.doe@example.com" />
+                  </div>
+                  <div>
+                    <Label htmlFor="billing-address">Address</Label>
+                    <Input id="billing-address" placeholder="1234 Main St" />
+                  </div>
+                  <div className="grid grid-cols-2 gap-4">
+                    <div>
+                      <Label htmlFor="billing-city">City</Label>
+                      <Input id="billing-city" placeholder="Las Vegas" />
+                    </div>
+                    <div>
+                      <Label htmlFor="billing-zip">ZIP Code</Label>
+                      <Input id="billing-zip" placeholder="89101" />
+                    </div>
+                  </div>
+                </div>
+              )}
+            </div>
+
             <div>
               <h3 className="text-xl font-semibold mb-4">Payment Method</h3>
               <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>

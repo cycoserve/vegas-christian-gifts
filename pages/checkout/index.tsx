@@ -28,7 +28,7 @@ export default function Component() {
       />
 
       <RootLayout>
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white py-12">
           <main className="container mx-auto px-4 py-8">
             <h2 className="text-3xl font-bold mb-8 text-center text-blue-600">Checkout</h2>
             <div className="grid md:grid-cols-2 gap-8">
