@@ -10,7 +10,7 @@ const nextConfig = {
       },
       {
         protocol: 'https',
-        hostname: 'fastly.picsum.photos',
+        hostname: 'fastly.picsum.photo',
         pathname: '/**',
       },
       {
@@ -35,4 +35,4 @@ const nextConfig = {
   },
 };
 
-module.exports = nextConfig;
+module.exports = nextConfig;
