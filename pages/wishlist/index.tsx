@@ -1,11 +1,11 @@
 import React from 'react';
-import { Heart } from 'lucide-react';
-import Layout from '@/components/Layouts/RootLayout';
-import MetaData from '@/components/headers/MetaData';
-import { useWishlist } from '@/lib/wishlistContext';
+import { Heart, FileHeart } from 'lucide-react';
+import Layout from 'components/Layouts/RootLayout';
+import MetaData from 'components/headers/MetaData';
+import { useWishlist } from 'lib/wishlistContext';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '@/components/ui/button';
+import { Button } from 'components/ui/button';
 import slugify from 'slugify';
 
 export default function WishlistPage() {
@@ -34,9 +34,9 @@ export default function WishlistPage() {
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                 {wishlist.map((product) => (
-                  <div key={product.id} className="border rounded-lg p-4 shadow-sm hover:shadow-lg transition-shadow duration-200">
+                  <div key={product.id} className="border rounded-lg p-4 shadow-sm hover:shadow-lg transition-shadow duration-200 flex flex-col">
                     <Link href={`/products/${slugify(product.name, { lower: true })}`}>
-                      <div className="relative h-64 mb-4">
+                      <div className="relative w-full h-0 pb-[133.33%] mb-4"> {/* 3:4 aspect ratio */}
                         <Image 
                           src={product.images[0]} 
                           alt={product.name} 
@@ -49,10 +49,10 @@ export default function WishlistPage() {
                     <p className="text-lg font-bold mb-4">${product.price.toFixed(2)}</p>
                     <Button 
                       variant="outline"
-                      className="w-full"
+                      className="w-full border-red-500 text-red-500 hover:bg-red-500 hover:text-white mt-auto"
                       onClick={() => removeFromWishlist(product.id)}
                     >
-                      Remove from Wishlist
+                      Remove from Wishlist <FileHeart className="inline ml-2" />
                     </Button>
                   </div>
                 ))}

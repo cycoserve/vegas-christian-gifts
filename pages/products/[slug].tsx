@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Layout from '@/components/Layouts/RootLayout'
-import { useCart } from '@/lib/cartContext'
-import { Button } from '@/components/ui/button'
-import { Plus, Minus } from 'lucide-react'
-import { useToast } from '@/components/ui/use-toast'
+import Layout from 'components/Layouts/RootLayout';
+import { useCart } from 'lib/cartContext';
+import { Button } from 'components/ui/button';
+import { Plus, Minus } from 'lucide-react';
+import { useToast } from 'components/ui/use-toast';
+import ProductDescription from '@/components/products/ProductDescription';
 
 interface Product {
   id: string;
@@ -16,12 +17,12 @@ interface Product {
 }
 
 export default function ProductPage() {
-  const router = useRouter()
-  const { slug } = router.query
-  const [product, setProduct] = useState<Product | null>(null)
-  const [quantity, setQuantity] = useState(1)
-  const { addToCart } = useCart()
-  const { toast } = useToast()
+  const router = useRouter();
+  const { slug } = router.query;
+  const [product, setProduct] = useState<Product | null>(null);
+  const [quantity, setQuantity] = useState(1);
+  const { addToCart } = useCart();
+  const { toast } = useToast();
 
   useEffect(() => {
     if (slug) {
@@ -29,22 +30,22 @@ export default function ProductPage() {
         .then(res => res.json())
         .then(data => {
           if (data.error) {
-            throw new Error(data.error)
+            throw new Error(data.error);
           }
-          setProduct(data)
+          setProduct(data);
         })
         .catch(error => {
-          console.error('Failed to fetch product:', error)
-        })
+          console.error('Failed to fetch product:', error);
+        });
     }
-  }, [slug])
+  }, [slug]);
 
   if (!product) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
 
   const updateQuantity = (delta: number) => {
-    setQuantity(prev => Math.max(1, prev + delta))
+    setQuantity(prev => Math.max(1, prev + delta));
   }
 
   const handleAddToCart = () => {
@@ -54,20 +55,20 @@ export default function ProductPage() {
       price: product.price,
       quantity: quantity,
       image: product.images[0]
-    })
+    });
 
     toast({
       title: "Added to cart",
       description: `${quantity}x ${product.name} added to your cart`,
       duration: 2000,
-    })
+    });
   }
 
   return (
     <Layout>
-      <div className="container mx-auto py-12 px-4">
+      <div className="max-w-4xl mx-auto py-12 px-4">
         <div className="grid md:grid-cols-2 gap-8">
-          <div className="relative h-96">
+          <div className="relative w-full h-0 pb-[133.33%]"> {/* 3:4 aspect ratio */}
             <Image 
               src={product.images[0]} 
               alt={product.name}
@@ -97,6 +98,7 @@ export default function ProductPage() {
                 <Plus className="h-4 w-4" />
               </Button>
             </div>
+            <ProductDescription />
 
             <Button 
               className="w-full"
@@ -109,4 +111,4 @@ export default function ProductPage() {
       </div>
     </Layout>
   )
-}
+}

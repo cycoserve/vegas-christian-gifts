@@ -6,7 +6,7 @@ import { Button } from '../ui/button';
 import { useCart } from '../../lib/cartContext';
 import { useWishlist } from '../../lib/wishlistContext';
 import { useToast } from '../ui/use-toast';
-import { Heart } from 'lucide-react';
+import { Heart, FileHeart } from 'lucide-react'; // Import solid heart icon
 import slugify from 'slugify';
 import { db } from '../../utils/firebase';
 import { collection, getDocs } from 'firebase/firestore';
@@ -89,9 +89,9 @@ const ProductsList: React.FC = () => {
     <div className="py-12 px-4">
       <div className="container mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {products.map((product) => (
-          <div key={product.id} className="border rounded-lg p-4 shadow-sm mb-8">
+          <div key={product.id} className="border rounded-lg p-4 shadow-sm mb-8 flex flex-col justify-between">
             <Link href={`/products/${slugify(product.name, { lower: true })}`}>
-              <div className="relative h-64 mb-4">
+              <div className="relative w-full h-0 pb-[133.33%] mb-4"> {/* 3:4 aspect ratio */}
                 <Image 
                   src={product.images[0]} 
                   alt={product.name} 
@@ -114,7 +114,6 @@ const ProductsList: React.FC = () => {
               <Button
                 variant="outline"
                 size="icon"
-                className={isInWishlist(product.id) ? 'text-red-500' : ''}
                 onClick={() => {
                   if (isInWishlist(product.id)) {
                     removeFromWishlist(product.id);
@@ -123,7 +122,11 @@ const ProductsList: React.FC = () => {
                   }
                 }}
               >
-                <Heart className="h-4 w-4" />
+                {isInWishlist(product.id) ? (
+                  <FileHeart className="h-4 w-4 text-red-500" />
+                ) : (
+                  <Heart className="h-4 w-4" />
+                )}
               </Button>
             </div>
           </div>

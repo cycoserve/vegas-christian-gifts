@@ -1,11 +1,11 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import slugify from 'slugify';
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import MetaData from '@/components/headers/MetaData';
-import Layout from '@/components/Layouts/RootLayout';
-import { useCart } from '@/lib/cartContext';
+import { Button } from 'components/ui/button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from 'components/ui/card';
+import MetaData from 'components/headers/MetaData';
+import Layout from 'components/Layouts/RootLayout';
+import { useCart } from 'lib/cartContext';
 import Image from 'next/image'
 
 export default function ShoppingCart() {
@@ -43,8 +43,8 @@ export default function ShoppingCart() {
                                                 <Image
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className="w-20 h-20 object-cover rounded"
-                                                    width={200}
+                                                    className="w-24 h-32 object-cover rounded"
+                                                    width={150}
                                                     height={200}
                                                 />
                                                 <div className="flex-grow">
@@ -85,7 +85,7 @@ export default function ShoppingCart() {
                                             </div>
                                         </CardContent>
                                     </Card>
-                                ))}
+                                ))} 
                             </div>
                             <div>
                                 <Card>
