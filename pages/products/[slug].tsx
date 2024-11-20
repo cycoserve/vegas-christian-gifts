@@ -1,13 +1,13 @@
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image'
-import Layout from 'components/Layouts/RootLayout';
-import { useCart } from 'lib/cartContext';
-import { useWishlist } from 'lib/wishlistContext';
-import { Button } from 'components/ui/Button';
-import { Plus, Minus, Heart } from 'lucide-react';
-import { useToast } from 'components/ui/use-toast';
-import ProductDescription from 'components/products/ProductDescription';
+import Layout from '../../components/Layouts/RootLayout'
+import { useCart } from '../../lib/cartContext'
+import { useWishlist } from '../../lib/wishlistContext'
+import { Button } from '../../components/ui/button'
+import { Plus, Minus, Heart } from 'lucide-react'
+import { useToast } from '../../components/ui/use-toast'
+import ProductDescription from 'components/products/ProductDescription'
 
 interface Product {
   id: string;
@@ -60,11 +60,10 @@ export default function ProductPage() {
     });
 
     toast({
-      variant: "success",
+      variant: "default",
       title: "Added to cart",
       description: `${quantity}x ${product.name} added to your cart`,
       duration: 2000,
-      productImage: product.images[0]
     });
   }
 
@@ -72,20 +71,18 @@ export default function ProductPage() {
     if (isInWishlist(product.id)) {
       removeFromWishlist(product.id);
       toast({
-        variant: "success",
+        variant: "default",
         title: "Removed from wishlist",
         description: `${product.name} has been removed from your wishlist`,
-        duration: 2000,
-        productImage: product.images[0]
+        duration: 2000
       });
     } else {
       addToWishlist(product);
       toast({
-        variant: "success",
+        variant: "default",
         title: "Added to wishlist",
         description: `${product.name} has been added to your wishlist`,
-        duration: 2000,
-        productImage: product.images[0]
+        duration: 2000
       });
     }
   }

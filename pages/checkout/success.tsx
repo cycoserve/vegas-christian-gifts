@@ -98,7 +98,7 @@ export default function Success() {
           Payment Successful!
         </h2>
         <p className="text-gray-600 mb-8">
-          Thank you for your purchase. We'll send you an email confirmation shortly.
+          Thank you for your purchase. We&apos;ll send you an email confirmation shortly.
         </p>
         <button
           onClick={handleReturnHome}

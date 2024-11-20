@@ -216,7 +216,7 @@ export default function SignUp() {
           <Link href="/terms" className="text-blue-600 hover:underline">
             Terms of Service
           </Link>
-          . We'll occasionally send you account-related emails.
+          . We&apos;ll occasionally send you account-related emails.
         </p>
 
         <p className="text-sm text-gray-600 text-center">

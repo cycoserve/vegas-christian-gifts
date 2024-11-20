@@ -2,7 +2,7 @@ import React from 'react';
 import { Product } from '../../types/product';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { useCart } from '../../lib/cartContext';
 import { useWishlist } from '../../lib/wishlistContext';
 import { useToast } from '../ui/use-toast';

@@ -1,7 +1,7 @@
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import Link from 'next/link';
 import slugify from 'slugify';
-import { Button } from 'components/ui/Button';
+import { Button } from 'components/ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from 'components/ui/Card';
 import MetaData from 'components/headers/MetaData';
 import Layout from 'components/Layouts/RootLayout';

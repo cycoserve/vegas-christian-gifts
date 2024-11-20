@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button"
+import { Button } from "@/components/ui/button"
 import { Cross, Heart, PlayIcon as Pray } from 'lucide-react'
 import Link from "next/link"
 import Image from 'next/image'

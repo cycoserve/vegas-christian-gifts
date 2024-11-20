@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import Drawer from "react-modern-drawer";
 import "react-modern-drawer/dist/index.css";
 import { ShoppingCart, X } from "lucide-react";
-import CartComponent from "../elements/CartComponent";
 import { ScrollArea } from "../ui/scroll-area";
 
 const CartDrawer = () => {
@@ -41,7 +40,7 @@ const CartDrawer = () => {
             </button>
             <div className="list flex flex-col justify-stretch h-full items-start text-zinc-900 py-0 text-xl gap-0">
               <ScrollArea className="w-full h-[calc(90vh-2rem)] pt-16 pb-12 px-4">
-                <CartComponent onClose={toggleDrawer} />
+                {/* <CartComponent onClose={toggleDrawer} /> */}
               </ScrollArea>
             </div>
           </div>

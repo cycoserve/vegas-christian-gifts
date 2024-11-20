@@ -1,11 +1,11 @@
 import { useState } from 'react'
 import { useCart } from '../../lib/cartContext'
-import { Button } from "../../components/ui/Button"
+import { Button } from "../../components/ui/button"
 import RootLayout from '../../components/Layouts/RootLayout'
 import MetaData from '../../components/headers/MetaData'
 import { toast } from '../../components/ui/use-toast'
 import { initiateCheckout } from '../../lib/stripe'
-import { ShippingAddressForm, type ShippingFormData } from '../../components/forms/ShippingAddressForm'
+import { ShippingAddressForm, type ShippingFormData } from '@/components/forms/ShippingAddressForm'
 
 export default function Component() {
   const { cartItems, getCartTotal } = useCart()

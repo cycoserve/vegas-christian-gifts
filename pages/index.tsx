@@ -19,8 +19,8 @@ export default function Home() {
       <RootLayout>
         <Hero />
         <Features />
-        <ProductList />
+        <ProductList products={[]} loading={false} />
       </RootLayout>
     </>
   );
-}
+}

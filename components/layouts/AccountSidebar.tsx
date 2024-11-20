@@ -1,5 +1,5 @@
 import { cn } from "../../lib/utils";
-import { Button } from "../ui/Button";
+import { Button } from "../ui/button";
 import { ScrollArea } from "../ui/scroll-area";
 import { ShoppingBag, User, Heart, Clock, LogOut } from "lucide-react";
 import Link from "next/link";

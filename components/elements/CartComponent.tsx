@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
-import { Button } from '../ui/Button';
+import { Button } from '../ui/button';
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/Card';
 import Link from 'next/link';
 import { useCart } from '../../lib/cartContext';
@@ -24,11 +24,10 @@ function CartComponent({ onClose }: CartComponentProps) {
             await updateQuantity(itemId, newQuantity);
             if (newQuantity > 0) {
                 toast({
-                    variant: "success",
+                    variant: "default",
                     title: "Quantity updated",
                     description: `${item.name} quantity updated to ${newQuantity}`,
                     duration: 2000,
-                    productImage: item.image
                 });
             }
         } catch (error) {
@@ -48,11 +47,10 @@ function CartComponent({ onClose }: CartComponentProps) {
             setLoading(`remove-${itemId}`);
             await removeFromCart(itemId);
             toast({
-                variant: "success",
+                variant: "default",
                 title: "Item Removed",
                 description: `${item.name} has been removed from your cart`,
                 duration: 2000,
-                productImage: item.image
             });
         } catch (error) {
             console.error('Error removing item:', error);

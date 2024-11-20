@@ -59,7 +59,7 @@ function Header() {
           </div>
 
           {/* Logo */}
-          <Logo />
+          {/* <Logo /> */}
 
           {/* Navigation links (hidden on mobile) */}
           <div className="hidden lg:block">

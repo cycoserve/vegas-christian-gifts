@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { AuthProvider, useAuth } from '../lib/authContext';
 import { CartProvider } from '../lib/cartContext';
 import { WishlistProvider } from '../lib/wishlistContext';
-import { Toaster } from '@/components/ui/toaster';
+import { Toaster } from '../components/ui/toaster';
 import '../styles/globals.css';
 
 function AuthWrapper({ children }: { children: React.ReactNode }) {
@@ -22,7 +22,7 @@ function AuthWrapper({ children }: { children: React.ReactNode }) {
         router.push('/account');
       }
     }
-  }, [user, loading, router.pathname]);
+  }, [user, loading, router]);
 
   if (loading) {
     return (

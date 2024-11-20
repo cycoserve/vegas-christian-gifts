@@ -1,7 +1,7 @@
 import React from 'react';
-import { Accordion } from "@/components/ui/accordion";
+import { Accordion } from '../../components/ui/accordion';
+import { HelpCircle } from 'lucide-react';
 import FAQItem from './FAQItem';
-import { QuestionMarkCircledIcon } from "@radix-ui/react-icons";
 
 interface FAQ {
   question: string;
@@ -18,7 +18,7 @@ const FAQSection: React.FC<FAQSectionProps> = ({ faqs }) => {
     <section className="w-full max-w-4xl mx-auto px-4 py-16">
       <div className="text-center mb-12">
         <div className="flex items-center justify-center gap-3 mb-4">
-          <QuestionMarkCircledIcon className="h-8 w-8 text-[#f46f00]" />
+          <HelpCircle className="h-8 w-8 text-[#f46f00]" />
           <h1 className="text-4xl font-bold">Frequently Asked Questions</h1>
         </div>
         <p className="text-gray-600 max-w-2xl mx-auto">

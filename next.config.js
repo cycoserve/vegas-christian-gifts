@@ -20,12 +20,21 @@ const nextConfig = {
       },
     ],
   },
-  webpack: (config, { isServer }) => {
-    // Only run this on the server
-    if (isServer) {
-      config.resolve.fallback = config.resolve.fallback || {};
-      config.resolve.fallback.fs = false;
-    }
+  webpack: (config) => {
+    // Disable cache temporarily to resolve snapshot issues
+    config.cache = false;
+
+    // Add watchOptions to handle file system watcher issues
+    config.watchOptions = {
+      ignored: /node_modules/,
+      poll: 1000, // Check for changes every second
+    };
+
+    // Preserve existing fallbacks
+    config.resolve.fallback = {
+      ...config.resolve.fallback,
+      fs: false,
+    };
 
     return config;
   },

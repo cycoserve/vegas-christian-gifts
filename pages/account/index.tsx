@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 import { useAuth } from '../../lib/authContext';
 import { AccountSidebar } from '@/components/layouts/AccountSidebar';
 import { Menu } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import type { GetServerSideProps } from 'next';
 
 // Force page to be client-side rendered

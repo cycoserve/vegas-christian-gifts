@@ -5,7 +5,7 @@ import { useWishlist } from '../../lib/wishlistContext';
 import { useCart } from '../../lib/cartContext';
 import { AccountSidebar } from '@/components/layouts/AccountSidebar';
 import { Menu, Heart, Trash2, ShoppingCart } from 'lucide-react';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@/components/ui/button';
 import { useToast } from '@/components/ui/use-toast';
 import Image from 'next/image';
 import Link from 'next/link';
