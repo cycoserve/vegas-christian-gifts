@@ -1,4 +1,4 @@
-import { NotFoundComponent } from '@/components/not-found'
+import { NotFoundComponent } from '../components/not-found'
 import React from 'react'
 
 function PageNotFound() {

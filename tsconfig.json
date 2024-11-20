@@ -14,9 +14,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./*"]
+      "@/*": ["./*"],
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"],
+      "@/styles/*": ["styles/*"],
+      "@/public/*": ["public/*"],
+      "@/types/*": ["types/*"]
     },
-    "types": ["@paypal/react-paypal-js", "react", "node"]
+    "types": ["react", "node"]
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "db.js", "types/editorjs.d.ts", "pages/api/contact.js", "types/paypal.d.ts"],
   "exclude": ["node_modules"]

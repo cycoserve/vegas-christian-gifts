@@ -1,15 +1,15 @@
 import React, { useState, ChangeEvent } from 'react';
 
-const SearchComponent: React.FC = () => {
+interface SearchComponentProps {
+  onSearch: (term: string) => void;
+}
+
+const SearchComponent: React.FC<SearchComponentProps> = ({ onSearch }) => {
   const [searchTerm, setSearchTerm] = useState<string>('');
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearchTerm(e.target.value);
-  };
-
-  const handleSearch = () => {
-    // Implement the search logic here
-    console.log('Searching for:', searchTerm);
+    onSearch(e.target.value);
   };
 
   return (
@@ -20,15 +20,14 @@ const SearchComponent: React.FC = () => {
           value={searchTerm}
           onChange={handleInputChange}
           placeholder="Search..."
-          className="w-full py-2 pl-10 -mb-4 pr-4 text-gray-800 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-pink-500"
+          className="w-full py-2 pl-10 -mb-4 pr-4 text-gray-800 bg-gray-200 rounded-full focus:outline-none focus:ring-2 focus:ring-blue-500"
         />
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500 cursor-pointer"
+          className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-gray-500"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
-          onClick={handleSearch}
         >
           <path
             strokeLinecap="round"

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Minus, Plus, Trash2 } from 'lucide-react';
-import { Button } from '../ui/button';
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/card';
+import { Button } from '../ui/Button';
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '../ui/Card';
 import Link from 'next/link';
 import { useCart } from '../../lib/cartContext';
 import Image from 'next/image';

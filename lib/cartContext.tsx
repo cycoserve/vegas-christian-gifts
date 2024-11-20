@@ -131,9 +131,9 @@ export function CartProvider({ children }: { children: ReactNode }): JSX.Element
     const existingItem = newCartItems.find(item => item.id === product.id);
 
     if (existingItem) {
-      existingItem.quantity += 1;
+      existingItem.quantity += product.quantity; // Add the new quantity to existing quantity
     } else {
-      newCartItems.push({ ...product, quantity: 1 });
+      newCartItems.push({ ...product }); // Keep the quantity from the product parameter
     }
 
     setCartItems(newCartItems);

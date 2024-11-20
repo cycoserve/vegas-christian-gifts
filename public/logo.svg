@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="50" viewBox="0 0 200 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Main Icon: Cross with Heart Integration -->
+  <g transform="translate(5, 5)">
+    <!-- Heart shape formed by two curves -->
+    <path d="
+      M20 5
+      C20 5 15 0 10 5
+      C5 10 10 15 20 25
+      C30 15 35 10 30 5
+      C25 0 20 5 20 5
+      Z
+    " fill="white"/>
+    
+    <!-- Cross overlay -->
+    <path d="
+      M20 10
+      L20 30
+      M13 17
+      L27 17
+    " stroke="white" stroke-width="3" stroke-linecap="round"/>
+  </g>
+
+  <!-- Text "VEGAS" with elegant styling -->
+  <g transform="translate(45, 32)">
+    <!-- V -->
+    <path d="M0 0L8 25L16 0" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- E -->
+    <path d="M26 0H46V4H30V11H44V15H30V21H46V25H26V0Z" fill="white"/>
+    <!-- G -->
+    <path d="M56 0C50 0 46 4 46 12.5C46 21 50 25 56 25C62 25 66 21 66 12.5V10H56V14H62C62 18 60 21 56 21C52 21 50 18 50 12.5C50 7 52 4 56 4C60 4 62 7 62 10H66C66 4 62 0 56 0Z" fill="white"/>
+    <!-- A -->
+    <path d="M76 25L84 0L92 25M78 15H90" stroke="white" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <!-- S -->
+    <path d="M102 4C102 1 104 0 107 0C110 0 112 1 112 4V7H108V5C108 4 108 4 107 4C106 4 106 4 106 5C106 8 107 8 112 11C114 12 116 13 116 17C116 21 114 25 107 25C100 25 98 21 98 17V15H102V17C102 19 102 21 107 21C112 21 112 19 112 17C112 15 111 14 107 12C103 10 102 8 102 4Z" fill="white"/>
+  </g>
+
+  <!-- Text "CHRISTIAN GIFTS" -->
+  <g transform="translate(45, 44)">
+    <text fill="white" style="font-family: Arial; font-size: 8px; letter-spacing: 3px; font-weight: 300;">
+      CHRISTIAN GIFTS
+    </text>
+  </g>
+</svg>

@@ -7,7 +7,7 @@ import React, { useEffect, useState } from 'react';
 
 const menuItems = [
   {
-    label: 'Shop',
+    label: 'Products',
     href: '/products',
     icon: <ShoppingCartIcon className="w-5 h-5" />,
   },
@@ -24,6 +24,11 @@ const menuItems = [
   {
     label: 'Cart',
     href: '/cart',
+    icon: <ShoppingCartIcon className="w-5 h-5" />,
+  },
+  {
+    label: 'Checkout',
+    href: '/checkout',
     icon: <ShoppingCartIcon className="w-5 h-5" />,
   },
 ];
@@ -44,7 +49,7 @@ const Banner = () => {
       {/* Left Section - Logo and Event Text */}
       <div className="flex items-center gap-3">
         <p className="text-sm font-semibold text-gray-900">Join Us!</p>
-        <Link href="/contact-us" className="text-sm text-gray-900 font-medium hover:text-gray-700">
+        <Link href="/signup" className="text-sm text-gray-900 font-medium hover:text-gray-700">
           Register now <span aria-hidden="true">&rarr;</span>
         </Link>
       </div>

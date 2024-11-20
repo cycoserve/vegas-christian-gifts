@@ -1,13 +1,43 @@
 import { useState } from 'react'
-import { Button } from '../components/ui/button'
-import { Input } from '../components/ui/input'
-import { Label } from '../components/ui/label'
+import { Button } from '../components/ui/Button'
+import { Input } from '../components/ui/Input'
+import { Label } from '../components/ui/Label'
 import { RadioGroup, RadioGroupItem } from '../components/ui/radio-group'
 import { CreditCard, ShoppingCartIcon as Paypal } from 'lucide-react'
+import { initiateCheckout } from '../lib/stripe'
+import { toast } from 'react-hot-toast'
 
 export function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState('credit')
   const [useShippingAsBilling, setUseShippingAsBilling] = useState(true)
+  const [isProcessing, setIsProcessing] = useState(false)
+
+  // Example cart items - replace with your actual cart data
+  const cartItems = [
+    {
+      name: "Sample Product",
+      price: 49.99,
+      quantity: 1,
+      images: []
+    }
+  ]
+
+  const handleCheckout = async () => {
+    try {
+      setIsProcessing(true)
+      if (paymentMethod === 'credit') {
+        await initiateCheckout(cartItems)
+      } else {
+        // Handle PayPal checkout
+        console.log('PayPal checkout not implemented')
+      }
+    } catch (error) {
+      console.error('Checkout error:', error)
+      toast.error('Failed to process checkout. Please try again.')
+    } finally {
+      setIsProcessing(false)
+    }
+  }
 
   return (
     <div className="min-h-screen bg-white">
@@ -107,31 +137,13 @@ export function Checkout() {
               <RadioGroup value={paymentMethod} onValueChange={setPaymentMethod}>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="credit" id="credit" />
-                  <Label htmlFor="credit">Credit Card</Label>
+                  <Label htmlFor="credit">Credit Card (Stripe)</Label>
                 </div>
                 <div className="flex items-center space-x-2">
                   <RadioGroupItem value="paypal" id="paypal" />
                   <Label htmlFor="paypal">PayPal</Label>
                 </div>
               </RadioGroup>
-              {paymentMethod === 'credit' && (
-                <div className="mt-4 space-y-4">
-                  <div>
-                    <Label htmlFor="card-number">Card Number</Label>
-                    <Input id="card-number" placeholder="1234 5678 9012 3456" />
-                  </div>
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label htmlFor="expiry">Expiry Date</Label>
-                      <Input id="expiry" placeholder="MM/YY" />
-                    </div>
-                    <div>
-                      <Label htmlFor="cvv">CVV</Label>
-                      <Input id="cvv" placeholder="123" />
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
           <div>
@@ -155,8 +167,12 @@ export function Checkout() {
                   <span>$59.49</span>
                 </div>
               </div>
-              <Button className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-semibold">
-                Place Order
+              <Button 
+                className="w-full bg-yellow-400 hover:bg-yellow-500 text-blue-600 font-semibold"
+                onClick={handleCheckout}
+                disabled={isProcessing}
+              >
+                {isProcessing ? 'Processing...' : 'Place Order'}
               </Button>
             </div>
             <div className="mt-6 text-center text-sm text-gray-500">

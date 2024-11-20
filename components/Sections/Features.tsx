@@ -1,4 +1,4 @@
-import { Card, CardContent } from "@/components/ui/card"
+import { Card, CardContent } from "../../components/ui/Card"
 import { Heart, Leaf, Gift, Paintbrush } from 'lucide-react'
 import Link from 'next/link'
 
